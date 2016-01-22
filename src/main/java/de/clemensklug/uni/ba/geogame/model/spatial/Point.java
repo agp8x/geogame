@@ -1,7 +1,6 @@
 package de.clemensklug.uni.ba.geogame.model.spatial;
 
 import de.clemensklug.uni.ba.geogame.parser.RCC8;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.Collection;
 
@@ -60,7 +59,7 @@ public class Point extends SpatialObject {
             case INTERSECTS:
                 return intersects(a, b);
         }
-        throw new NotImplementedException();
+        throw new UnsupportedOperationException();
     }
 
     public static boolean disjoint(Point a, Point b) {
