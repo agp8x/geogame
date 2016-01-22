@@ -1,0 +1,192 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY georss "http://www.georss.org/georss/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY geogame "http://clemensklug.de/uni/ba/geogame#" >
+    <!ENTITY geogame2 "http://clemensklug.de/uni/ba/geogame/" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY geo "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY tokendisperser5 "http://clemensklug.de/uni/ba/geogame/test/tokendisperser5/" >
+]>
+
+
+<rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame#"
+     xml:base="http://clemensklug.de/uni/ba/geogame"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:tokendisperser5="&geogame2;test/tokendisperser5/"
+     xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:georss="http://www.georss.org/georss/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:geogame2="http://clemensklug.de/uni/ba/geogame/">
+    <owl:Ontology rdf:about="&geogame2;test/tokendisperser5">
+        <rdfs:label>geo TTT</rdfs:label>
+        <owl:imports rdf:resource="file:geogame.owl"/>
+        <owl:imports rdf:resource="http://www.w3.org/2005/Incubator/geo/XGR-geo-20071023/W3C_XGR_Geo_files/geo_2007.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#StartTokenDisperse -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#StartTokenDisperse">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <tokenhandler-is rdf:resource="&geogame2;main/geottt#StartTokens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#StartTokens -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#StartTokens">
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <dispersed-tokens rdf:resource="&geogame2;test/tokendisperser5/o"/>
+        <dispersed-tokens rdf:resource="&geogame2;test/tokendisperser5/x"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o1 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o1">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o2 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o2">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o3 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o3">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o4 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o4">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o5 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o5">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o6 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o6">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x1 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x1">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x2 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x2">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x3 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x3">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x4 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x4">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x5 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x5">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x6 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x6">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/test/tokendisperser5/o -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;test/tokendisperser5/o">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o1"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o2"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o3"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o4"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o5"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/test/tokendisperser5/x -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;test/tokendisperser5/x">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x1"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x2"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x3"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x4"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x5"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x6"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

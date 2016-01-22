@@ -1,0 +1,635 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY georss "http://www.georss.org/georss/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY geogame "http://clemensklug.de/uni/ba/geogame#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY geo "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame#"
+     xml:base="http://clemensklug.de/uni/ba/geogame"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:georss="http://www.georss.org/georss/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame">
+        <rdfs:label>geogame</rdfs:label>
+        <rdfs:comment>TODO: Point: add restriction for radius</rdfs:comment>
+        <rdfs:comment>Definitions for describing GeoGames</rdfs:comment>
+        <owl:imports rdf:resource="file:imports/geo_2007.owl"/>
+        <owl:imports rdf:resource="file:imports/geosparql_vocab_all.rdf"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#at -->
+
+    <owl:ObjectProperty rdf:about="&geogame;at">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&geo;Point"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="&geogame;Action"/>
+                    <rdf:Description rdf:about="&geogame;PlayerLocationCondition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#disables -->
+
+    <owl:ObjectProperty rdf:about="&geogame;disables">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdfs:range rdf:resource="&geogame;Action"/>
+        <rdfs:domain rdf:resource="&geogame;EnableOtherActionAction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#dispersed-tokens -->
+
+    <owl:ObjectProperty rdf:about="&geogame;dispersed-tokens">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="&geogame;TokenDisperser"/>
+        <rdfs:range rdf:resource="&geogame;TokenSet"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#enables -->
+
+    <owl:ObjectProperty rdf:about="&geogame;enables">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdfs:range rdf:resource="&geogame;Action"/>
+        <rdfs:domain rdf:resource="&geogame;EnableOtherActionAction"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#game_action -->
+
+    <owl:ObjectProperty rdf:about="&geogame;game_action">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&geogame;Action"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#game_condition_draw -->
+
+    <owl:ObjectProperty rdf:about="&geogame;game_condition_draw">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&geogame;DrawCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#game_condition_start -->
+
+    <owl:ObjectProperty rdf:about="&geogame;game_condition_start">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&geogame;StartCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#game_condition_win -->
+
+    <owl:ObjectProperty rdf:about="&geogame;game_condition_win">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&geogame;WinCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#has-condition -->
+
+    <owl:ObjectProperty rdf:about="&geogame;has-condition">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&geogame;Condition"/>
+        <rdfs:domain rdf:resource="&geogame;LogicCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#has-token -->
+
+    <owl:ObjectProperty rdf:about="&geogame;has-token">
+        <rdfs:range rdf:resource="&geogame;Token"/>
+        <rdfs:domain rdf:resource="&geogame;TokenSet"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#satisfied-action -->
+
+    <owl:ObjectProperty rdf:about="&geogame;satisfied-action">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="&geogame;Action"/>
+        <rdfs:domain rdf:resource="&geogame;Condition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#token-at -->
+
+    <owl:ObjectProperty rdf:about="&geogame;token-at">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="&geogame;TokenCondition"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#tokenhandler-is -->
+
+    <owl:ObjectProperty rdf:about="&geogame;tokenhandler-is">
+        <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
+        <rdfs:domain rdf:resource="&geogame;Action"/>
+        <rdfs:range rdf:resource="&geogame;TokenHandler"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#combination -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;combination">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&geogame;LogicCondition"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#enabled -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;enabled">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&geogame;Action"/>
+        <rdfs:range rdf:resource="&xsd;boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#players -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;players">
+        <rdfs:domain rdf:resource="&geogame;Geogame"/>
+        <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#question -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;question">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&geogame;Action"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#synctime -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;synctime">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&geogame;Action"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#text -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;text">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&geogame;EchoAction"/>
+        <rdfs:range rdf:resource="&xsd;string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#timeout -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;timeout">
+        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
+        <rdfs:domain rdf:resource="&geogame;TimeOutCondition"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#Action -->
+
+    <owl:Class rdf:about="&geogame;Action">
+        <rdfs:subClassOf rdf:resource="&geogame;GeoGameObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;question"/>
+                <owl:allValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;at"/>
+                <owl:someValuesFrom rdf:resource="&geo;Point"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;enabled"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;synctime"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#Condition -->
+
+    <owl:Class rdf:about="&geogame;Condition">
+        <rdfs:subClassOf rdf:resource="&geogame;GeoGameObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;satisfied-action"/>
+                <owl:allValuesFrom rdf:resource="&geogame;Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#DrawCondition -->
+
+    <owl:Class rdf:about="&geogame;DrawCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;LogicCondition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#EchoAction -->
+
+    <owl:Class rdf:about="&geogame;EchoAction">
+        <rdfs:subClassOf rdf:resource="&geogame;Action"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;question"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#EnableOtherActionAction -->
+
+    <owl:Class rdf:about="&geogame;EnableOtherActionAction">
+        <rdfs:subClassOf rdf:resource="&geogame;Action"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;enables"/>
+                <owl:allValuesFrom rdf:resource="&geogame;Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;disables"/>
+                <owl:allValuesFrom rdf:resource="&geogame;Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#GeoGameObject -->
+
+    <owl:Class rdf:about="&geogame;GeoGameObject"/>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#Geogame -->
+
+    <owl:Class rdf:about="&geogame;Geogame">
+        <rdfs:subClassOf rdf:resource="&geogame;GeoGameObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_condition_draw"/>
+                <owl:onClass rdf:resource="&geogame;DrawCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;players"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;nonNegativeInteger"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_condition_start"/>
+                <owl:onClass rdf:resource="&geogame;StartCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_action"/>
+                <owl:someValuesFrom rdf:resource="&geogame;Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_condition_win"/>
+                <owl:onClass rdf:resource="&geogame;WinCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#LogicCondition -->
+
+    <owl:Class rdf:about="&geogame;LogicCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;Condition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;combination"/>
+                <owl:allValuesFrom rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:someValuesFrom rdf:resource="&geogame;Condition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#Marker -->
+
+    <owl:Class rdf:about="&geogame;Marker">
+        <rdfs:subClassOf rdf:resource="&geogame;Token"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#PlayerLocationCondition -->
+
+    <owl:Class rdf:about="&geogame;PlayerLocationCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;Condition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;at"/>
+                <owl:someValuesFrom rdf:resource="&geo;Point"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#StartCondition -->
+
+    <owl:Class rdf:about="&geogame;StartCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;LogicCondition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#TimeOutCondition -->
+
+    <owl:Class rdf:about="&geogame;TimeOutCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;Condition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;timeout"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;int"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#Token -->
+
+    <owl:Class rdf:about="&geogame;Token">
+        <rdfs:subClassOf rdf:resource="&geogame;GeoGameObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#TokenAction -->
+
+    <owl:Class rdf:about="&geogame;TokenAction">
+        <rdfs:subClassOf rdf:resource="&geogame;Action"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;tokenhandler-is"/>
+                <owl:onClass rdf:resource="&geogame;TokenHandler"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#TokenCapture -->
+
+    <owl:Class rdf:about="&geogame;TokenCapture">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenHandler"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#TokenCondition -->
+
+    <owl:Class rdf:about="&geogame;TokenCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;Condition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;token-at"/>
+                <owl:someValuesFrom rdf:resource="&geogame;TokenHandler"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#TokenCount -->
+
+    <owl:Class rdf:about="&geogame;TokenCount">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenHandler"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#TokenDisperser -->
+
+    <owl:Class rdf:about="&geogame;TokenDisperser">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenHandler"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;dispersed-tokens"/>
+                <owl:someValuesFrom rdf:resource="&geogame;TokenSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#TokenHandler -->
+
+    <owl:Class rdf:about="&geogame;TokenHandler">
+        <rdfs:subClassOf rdf:resource="&geogame;GeoGameObject"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#TokenSet -->
+
+    <owl:Class rdf:about="&geogame;TokenSet">
+        <rdfs:subClassOf rdf:resource="&geogame;Token"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-token"/>
+                <owl:someValuesFrom rdf:resource="&geogame;Token"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#WinCondition -->
+
+    <owl:Class rdf:about="&geogame;WinCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;LogicCondition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#Point -->
+
+    <owl:Class rdf:about="&geo;Point">
+        <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#SpatialObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geo;lat"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geo;long"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;double"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDisjointClasses"/>
+        <owl:members rdf:parseType="Collection">
+            <rdf:Description rdf:about="&geogame;Action"/>
+            <rdf:Description rdf:about="&geogame;DrawCondition"/>
+            <rdf:Description rdf:about="&geogame;Geogame"/>
+            <rdf:Description rdf:about="&geogame;PlayerLocationCondition"/>
+            <rdf:Description rdf:about="&geogame;StartCondition"/>
+            <rdf:Description rdf:about="&geogame;TimeOutCondition"/>
+            <rdf:Description rdf:about="&geogame;Token"/>
+            <rdf:Description rdf:about="&geogame;TokenCondition"/>
+            <rdf:Description rdf:about="&geogame;TokenHandler"/>
+            <rdf:Description rdf:about="&geogame;WinCondition"/>
+            <rdf:Description rdf:about="&geo;Point"/>
+        </owl:members>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

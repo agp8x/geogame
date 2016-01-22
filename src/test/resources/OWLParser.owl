@@ -1,0 +1,221 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY georss "http://www.georss.org/georss/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY geogame "http://clemensklug.de/uni/ba/geogame#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY geo "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame#"
+     xml:base="http://clemensklug.de/uni/ba/geogame/test/owlparser"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:georss="http://www.georss.org/georss/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/test/owlparser">
+        <owl:label>OWL Parser test enviroment</owl:label>
+        <owl:imports rdf:resource="file:geogame.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- #GeoTTTClass -->
+
+    <owl:Class rdf:about="#GeoTTTClass">
+        <rdfs:subClassOf rdf:resource="&geogame;Geogame"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_action"/>
+                <owl:onClass rdf:resource="&geogame;Action"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/test/owlparser#draw -->
+
+    <owl:NamedIndividual rdf:about="#draw">
+        <rdf:type rdf:resource="&geogame;DrawCondition"/>
+        <combination rdf:datatype="&xsd;string">F</combination>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #Action00 -->
+
+    <owl:NamedIndividual rdf:about="#Action00">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="#Location00"/>
+        <tokenhandler-is rdf:resource="#TokenCTF0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #Action01 -->
+
+    <owl:NamedIndividual rdf:about="#Action01">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">false</enabled>
+        <question>QUESTION</question>
+        <at rdf:resource="#Location01"/>
+        <tokenhandler-is rdf:resource="#TokenDis0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #GeoTTTInst -->
+
+    <owl:NamedIndividual rdf:about="#GeoTTTInst">
+        <rdf:type rdf:resource="#GeoTTTClass"/>
+        <game_action rdf:resource="#Action00"/>
+        <game_action rdf:resource="#Action01"/>
+        <game_condition_start rdf:resource="#StartCondition0"/>
+        <game_condition_win rdf:resource="#WinCondition0"/>
+        <game_condition_draw rdf:resource="#draw"/>
+        <players rdf:datatype="&xsd;integer">2</players>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #Location00 -->
+
+    <owl:NamedIndividual rdf:about="#Location00">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">0.0</geo:lat>
+        <geo:long rdf:datatype="&xsd;double">0.0</geo:long>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #Location01 -->
+
+    <owl:NamedIndividual rdf:about="#Location01">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">0.0</geo:lat>
+        <geo:long rdf:datatype="&xsd;double">1.0</geo:long>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #Location02 -->
+
+    <owl:NamedIndividual rdf:about="#Location02">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">0.0</geo:lat>
+        <geo:long rdf:datatype="&xsd;double">2.0</geo:long>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #LogicCondition0 -->
+
+    <owl:NamedIndividual rdf:about="#LogicCondition0">
+        <rdf:type rdf:resource="&geogame;LogicCondition"/>
+        <combination rdf:datatype="&xsd;string">OR</combination>
+        <has-condition rdf:resource="#LogicCondition1"/>
+        <has-condition rdf:resource="#TokenCondition0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #LogicCondition1 -->
+
+    <owl:NamedIndividual rdf:about="#LogicCondition1">
+        <rdf:type rdf:resource="&geogame;LogicCondition"/>
+        <combination rdf:datatype="&xsd;string">T</combination>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #StartCondition0 -->
+
+    <owl:NamedIndividual rdf:about="#StartCondition0">
+        <rdf:type rdf:resource="&geogame;StartCondition"/>
+        <has-condition rdf:resource="#LogicCondition1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #Token0 -->
+
+    <owl:NamedIndividual rdf:about="#Token0">
+        <rdf:type rdf:resource="&geogame;Marker"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #TokenCTF0 -->
+
+    <owl:NamedIndividual rdf:about="#TokenCTF0">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #TokenCondition0 -->
+
+    <owl:NamedIndividual rdf:about="#TokenCondition0">
+        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <token-at rdf:resource="#TokenCTF0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #TokenDis0 -->
+
+    <owl:NamedIndividual rdf:about="#TokenDis0">
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <dispersed-tokens rdf:resource="#Token0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- #WinCondition0 -->
+
+    <owl:NamedIndividual rdf:about="#WinCondition0">
+        <rdf:type rdf:resource="&geogame;WinCondition"/>
+        <has-condition rdf:resource="#LogicCondition0"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

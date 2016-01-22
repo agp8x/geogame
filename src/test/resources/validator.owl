@@ -1,0 +1,82 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY geogame "http://clemensklug.de/uni/ba/geogame#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY geo "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+]>
+
+<rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame#"
+     xml:base="http://clemensklug.de/uni/ba/validator_junit/v0"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:georss="http://www.georss.org/georss/">
+    <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/test/validator/invalid">
+        <owl:imports rdf:resource="file:geogame.owl" />
+        <owl:label>test token counter</owl:label>
+    </owl:Ontology>
+
+    <!-- Actions -->
+
+    <owl:NamedIndividual rdf:about="#Action00">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <at rdf:resource="#Location00"/>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#Action01">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <tokenhandler-is rdf:resource="&geogame;fooBar"/>
+        <tokenhandler-is rdf:resource="&geogame;fooBar2"/>
+        <at rdf:resource="#Location00"/>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#fooBar">
+        <rdf:type rdf:resource="&geogame;TokenHandler"/>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#fooBar2">
+        <rdf:type rdf:resource="&geogame;TokenHandler"/>
+    </owl:NamedIndividual>
+    <!-- Locations -->
+
+    <owl:NamedIndividual rdf:about="#Location00">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">0.0</geo:lat>
+        <geo:long rdf:datatype="&xsd;double">0.0</geo:long>
+        <georss:radius rdf:datatype="&xsd;double">10</georss:radius>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#Location01">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">0.0</geo:lat>
+        <geo:long rdf:datatype="&xsd;double">0.0</geo:long>
+        <geo:long rdf:datatype="&xsd;double">1.0</geo:long>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Location300">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">300.0</geo:lat>
+        <georss:radius rdf:datatype="&xsd;double">30</georss:radius>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Location310">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">310.0</geo:lat>
+        <georss:radius rdf:datatype="&xsd;double">31</georss:radius>
+    </owl:NamedIndividual>
+
+    <owl:NamedIndividual rdf:about="#Location320">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">320.0</geo:lat>
+        <georss:radius rdf:datatype="&xsd;double">32</georss:radius>
+    </owl:NamedIndividual>
+    
+</rdf:RDF>
+

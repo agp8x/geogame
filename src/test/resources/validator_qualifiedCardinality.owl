@@ -1,0 +1,235 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY geogame "http://clemensklug.de/uni/ba/geogame#" >
+    <!ENTITY geosparql "http://www.opengis.net/ont/geosparql#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY wgs84_pos "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#"
+     xml:base="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest"
+     xmlns:geosparql="http://www.opengis.net/ont/geosparql#"
+     xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest">
+        <rdfs:comment>TODO: add support for property Cardinality restrictions
+
+    &lt;rdf:Description rdf:about=&quot;&amp;geogame;StartCondition&quot;&gt;
+        &lt;rdfs:subClassOf&gt;
+            &lt;owl:Restriction&gt;
+                &lt;owl:onProperty rdf:resource=&quot;&amp;geogame;has-condition&quot;/&gt;
+                &lt;owl:onClass rdf:resource=&quot;&amp;geogame;PlayerLocationCondition&quot;/&gt;
+                &lt;owl:qualifiedCardinality rdf:datatype=&quot;&amp;xsd;nonNegativeInteger&quot;&gt;1&lt;/owl:qualifiedCardinality&gt;
+            &lt;/owl:Restriction&gt;
+        &lt;/rdfs:subClassOf&gt;
+        &lt;rdfs:subClassOf&gt;
+            &lt;owl:Restriction&gt;
+                &lt;owl:onProperty rdf:resource=&quot;&amp;geogame;has-condition&quot;/&gt;
+                &lt;owl:onClass rdf:resource=&quot;&amp;geogame;TimeOutCondition&quot;/&gt;
+                &lt;owl:qualifiedCardinality rdf:datatype=&quot;&amp;xsd;nonNegativeInteger&quot;&gt;1&lt;/owl:qualifiedCardinality&gt;
+            &lt;/owl:Restriction&gt;
+        &lt;/rdfs:subClassOf&gt;
+    &lt;/rdf:Description&gt;</rdfs:comment>
+        <rdfs:comment>TODO: add EnableAction, so all Actions are just enabled after the PlayerLocationCondition in StartCondition is satisfied</rdfs:comment>
+        <owl:imports rdf:resource="file:geogame.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#lat -->
+
+    <rdf:Description rdf:about="&wgs84_pos;lat">
+        <owl:propertyDisjointWith rdf:resource="&wgs84_pos;long"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#long -->
+
+    <rdf:Description rdf:about="&wgs84_pos;long"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#Condition -->
+
+    <rdf:Description rdf:about="&geogame;Condition">
+        <owl:disjointWith rdf:resource="&wgs84_pos;Point"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#EchoAction -->
+
+    <rdf:Description rdf:about="&geogame;EchoAction">
+        <owl:disjointWith rdf:resource="&geogame;PlayerLocationCondition"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#EnableOtherActionAction -->
+
+    <rdf:Description rdf:about="&geogame;EnableOtherActionAction">
+        <owl:disjointWith rdf:resource="&geogame;PlayerLocationCondition"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#PlayerLocationCondition -->
+
+    <rdf:Description rdf:about="&geogame;PlayerLocationCondition"/>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#StartCondition -->
+
+    <rdf:Description rdf:about="&geogame;StartCondition">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;PlayerLocationCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;TimeOutCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.w3.org/2003/01/geo/wgs84_pos#Point -->
+
+    <rdf:Description rdf:about="&wgs84_pos;Point"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartCondition -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartCondition">
+        <rdf:type rdf:resource="&geogame;StartCondition"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartPlaceCondition"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#TimeOutCounter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartLocation -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartLocation">
+        <rdf:type rdf:resource="&wgs84_pos;Point"/>
+        <wgs84_pos:lat rdf:datatype="&xsd;double">0.0</wgs84_pos:lat>
+        <wgs84_pos:long rdf:datatype="&xsd;double">1.0</wgs84_pos:long>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartPlaceCondition -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartPlaceCondition">
+        <rdf:type rdf:resource="&geogame;PlayerLocationCondition"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartLocation"/>
+    </owl:NamedIndividual>
+    
+
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#TimeOutCounter22 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#TimeOutCounter">
+        <rdf:type rdf:resource="&geogame;TimeOutCondition"/>
+        <geogame:timeout rdf:datatype="&xsd;integer">2</geogame:timeout>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#dummyCondition -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#dummyCondition">
+        <rdf:type rdf:resource="&geogame;Condition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#foo -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#foo">
+        <rdf:type rdf:resource="&wgs84_pos;Point"/>
+        <wgs84_pos:lat rdf:datatype="&xsd;double">123.0</wgs84_pos:lat>
+        <wgs84_pos:long rdf:datatype="&xsd;double">145.0</wgs84_pos:long>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartCondition"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartLocation"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#StartPlaceCondition"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#TimeOutCounter"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#dummyCondition"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

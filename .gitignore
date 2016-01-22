@@ -1,0 +1,7 @@
+.idea/
+target/
+*.png
+_*
+*.iml
+catalog-v*.xml
+src/*/java/de/clemensklug/java/utils/

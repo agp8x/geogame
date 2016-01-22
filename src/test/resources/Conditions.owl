@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY geogame "http://clemensklug.de/uni/ba/geogame#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY geo "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+]>
+
+<rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame#"
+     xml:base="http://clemensklug.de/uni/ba/geoTTT_junit/v0"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:georss="http://www.georss.org/georss/">
+    <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/test/conditions">
+        <owl:imports rdf:resource="file:geogame.owl" />
+        <owl:label>GEO TTT test enviroment</owl:label>
+    </owl:Ontology>
+    
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+    <owl:NamedIndividual rdf:about="#Location1">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat>0</geo:lat>
+        <geo:long>0</geo:long>
+        <georss:radius rdf:datatype="&xsd;float">1</georss:radius>
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#EnableAction0">
+        <rdf:type rdf:resource="&geogame;EnableOtherActionAction"/>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="#Location1"/>
+        <enables rdf:resource="#EchoAction0" />
+    </owl:NamedIndividual>
+    <owl:NamedIndividual rdf:about="#EchoAction0">
+        <rdf:type rdf:resource="&geogame;EchoAction"/>
+        <enabled rdf:datatype="&xsd;boolean">false</enabled>
+    </owl:NamedIndividual>
+   
+    <owl:NamedIndividual rdf:about="#WinCondition0">
+    	<rdf:type rdf:resource="&geogame;WinCondition" />
+    	<has-condition rdf:resource="#LogicCondition0" />
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#StartCondition0">
+    	<rdf:type rdf:resource="&geogame;StartCondition" />
+    	<has-condition rdf:resource="#LogicCondition0" />
+    	<has-condition rdf:resource="#LogicCondition1" />
+    	<satisfied-action rdf:resource="#EnableAction0" />
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#LogicCondition0">
+    	<rdf:type rdf:resource="&geogame;LogicCondition" />
+    	<combination rdf:datatype="&xsd;string">T</combination>
+    </owl:NamedIndividual>
+    
+    <owl:NamedIndividual rdf:about="#LogicCondition1">
+    	<rdf:type rdf:resource="&geogame;LogicCondition" />
+    	<combination rdf:datatype="&xsd;string">T</combination>
+    </owl:NamedIndividual>
+</rdf:RDF>
+

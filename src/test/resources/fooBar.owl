@@ -1,0 +1,52 @@
+Prefix(:=<http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest#>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+Prefix(geogame:=<http://clemensklug.de/uni/ba/geogame#>)
+Prefix(geosparql:=<http://www.opengis.net/ont/geosparql#>)
+Prefix(wgs84_pos:=<http://www.w3.org/2003/01/geo/wgs84_pos#>)
+
+
+Ontology(<http://clemensklug.de/uni/ba/geogame/qualifiedCardinalityTest>
+Import(<file:geogame.owl>)
+Annotation(rdfs:comment "TODO: add support for property Cardinality restrictions
+
+    <rdf:Description rdf:about=\"&geogame;StartCondition\">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource=\"&geogame;has-condition\"/>
+                <owl:onClass rdf:resource=\"&geogame;PlayerLocationCondition\"/>
+                <owl:qualifiedCardinality rdf:datatype=\"&xsd;nonNegativeInteger\">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource=\"&geogame;has-condition\"/>
+                <owl:onClass rdf:resource=\"&geogame;TimeOutCondition\"/>
+                <owl:qualifiedCardinality rdf:datatype=\"&xsd;nonNegativeInteger\">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>")
+Annotation(rdfs:comment "TODO: add EnableAction, so all Actions are just enabled after the PlayerLocationCondition in StartCondition is satisfied")
+
+Declaration(NamedIndividual(:StartCondition))
+Declaration(NamedIndividual(:StartLocation))
+Declaration(NamedIndividual(:StartPlaceCondition))
+Declaration(NamedIndividual(:TimeOutCounter))
+Declaration(NamedIndividual(:dummyCondition))
+SubClassOf(geogame:StartCondition ObjectExactCardinality(1 geogame:has-condition geogame:PlayerLocationCondition))
+SubClassOf(geogame:StartCondition ObjectExactCardinality(1 geogame:has-condition geogame:TimeOutCondition))
+ClassAssertion(geogame:StartCondition :StartCondition)
+ObjectPropertyAssertion(geogame:has-condition :StartCondition :StartPlaceCondition)
+ObjectPropertyAssertion(geogame:has-condition :StartCondition :StartLocation)
+ClassAssertion(wgs84_pos:Point :StartLocation)
+DataPropertyAssertion(wgs84_pos:lat :StartLocation "0.0"^^xsd:double)
+DataPropertyAssertion(wgs84_pos:long :StartLocation "1.0"^^xsd:double)
+ClassAssertion(geogame:PlayerLocationCondition :StartPlaceCondition)
+ObjectPropertyAssertion(geogame:at :StartPlaceCondition :StartLocation)
+ClassAssertion(geogame:TimeOutCondition :TimeOutCounter)
+DataPropertyAssertion(geogame:timeout :TimeOutCounter "2"^^xsd:integer)
+ClassAssertion(geogame:Condition :dummyCondition)
+)

@@ -1,0 +1,825 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY georss "http://www.georss.org/georss/" >
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY geogame "http://clemensklug.de/uni/ba/geogame#" >
+    <!ENTITY geogame2 "http://clemensklug.de/uni/ba/geogame/" >
+    <!ENTITY geosparql "http://www.opengis.net/ont/geosparql#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY geo "http://www.w3.org/2003/01/geo/wgs84_pos#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame#"
+     xml:base="http://clemensklug.de/uni/ba/geogame"
+     xmlns:geo="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:geosparql="http://www.opengis.net/ont/geosparql#"
+     xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:georss="http://www.georss.org/georss/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:geogame2="http://clemensklug.de/uni/ba/geogame/">
+    <owl:Ontology rdf:about="&geogame2;test/geottt-junit/lecture-field">
+        <rdfs:label>GEO TTT test enviroment</rdfs:label>
+        <owl:imports rdf:resource="file:geogame.owl"/>
+        <rdfs:comment>source: Semantic Information Processing WS1516, 04-62 "Search Strategies for Games" "Modelling the game"</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#StartCondition -->
+
+    <rdf:Description rdf:about="&geogame;StartCondition">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;PlayerLocationCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#GeoTTT -->
+
+    <owl:Class rdf:about="&geogame2;main/geottt#GeoTTT">
+        <rdfs:subClassOf rdf:resource="&geogame;Geogame"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_action"/>
+                <owl:onClass rdf:resource="&geogame;Action"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">9</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Action00 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action00">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+        <tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Action01 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action01">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+        <tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Action02 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action02">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+        <tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Action10 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action10">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+        <tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Action11 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action11">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+        <tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Action12 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action12">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+        <tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Action20 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action20">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+        <tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Action21 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action21">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+        <tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF7"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Action22 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action22">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;integer">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+        <tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF8"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#DrawCondition0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#DrawCondition0">
+        <rdf:type rdf:resource="&geogame;DrawCondition"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TOCondition0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Location00 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location00">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <georss:radius rdf:datatype="&xsd;double">10.0</georss:radius>
+        <geo:lat rdf:datatype="&xsd;double">52.0</geo:lat>
+        <geo:long rdf:datatype="&xsd;double">85.0</geo:long>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Location01 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location01">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">153.0</geo:lat>
+        <geo:long rdf:datatype="&xsd;double">70.0</geo:long>
+        <georss:radius rdf:datatype="&xsd;double">10.0</georss:radius>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Location02 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location02">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:long rdf:datatype="&xsd;double">21.0</geo:long>
+        <geo:lat rdf:datatype="&xsd;double">365.0</geo:lat>
+        <georss:radius rdf:datatype="&xsd;double">10.0</georss:radius>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Location10 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location10">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:long rdf:datatype="&xsd;double">257.0</geo:long>
+        <geo:lat rdf:datatype="&xsd;double">55.0</geo:lat>
+        <georss:radius rdf:datatype="&xsd;double">10.0</georss:radius>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Location11 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location11">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:long rdf:datatype="&xsd;double">218.0</geo:long>
+        <geo:lat rdf:datatype="&xsd;double">234.0</geo:lat>
+        <georss:radius rdf:datatype="&xsd;double">10.0</georss:radius>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Location12 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location12">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:long rdf:datatype="&xsd;double">192.0</geo:long>
+        <geo:lat rdf:datatype="&xsd;double">473.0</geo:lat>
+        <georss:radius rdf:datatype="&xsd;double">10.0</georss:radius>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Location20 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location20">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:long rdf:datatype="&xsd;double">385.0</geo:long>
+        <geo:lat rdf:datatype="&xsd;double">85.0</geo:lat>
+        <georss:radius rdf:datatype="&xsd;double">10.0</georss:radius>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Location21 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location21">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">326.0</geo:lat>
+        <geo:long rdf:datatype="&xsd;double">461.0</geo:long>
+        <georss:radius rdf:datatype="&xsd;double">10.0</georss:radius>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#Location22 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location22">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:long rdf:datatype="&xsd;double">331.0</geo:long>
+        <geo:lat rdf:datatype="&xsd;double">363.0</geo:lat>
+        <georss:radius rdf:datatype="&xsd;double">10.0</georss:radius>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#LogicCondition0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#LogicCondition0">
+        <rdf:type rdf:resource="&geogame;LogicCondition"/>
+        <combination rdf:datatype="&xsd;string">OR</combination>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition0"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition1"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition2"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition3"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition4"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition5"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition6"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition7"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#StartCondition0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#StartCondition0">
+        <rdf:type rdf:resource="&geogame;StartCondition"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TOCondition0"/>
+        <has-condition rdf:resource="&geogame2;main/geottt#StartPlaceCondition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TOCondition0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TOCondition0">
+        <rdf:type rdf:resource="&geogame;TimeOutCondition"/>
+        <timeout rdf:datatype="&xsd;integer">240</timeout>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF0">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF1 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF1">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF2 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF2">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF3 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF3">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF4 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF4">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF5 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF5">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF6 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF6">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF7 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF7">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF8 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF8">
+        <rdf:type rdf:resource="&geogame;TokenCapture"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition0">
+        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF6"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF7"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF8"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition1 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition1">
+        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF3"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF4"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition2 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition2">
+        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF0"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF1"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition3 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition3">
+        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF2"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF5"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF8"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition4 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition4">
+        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF1"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF4"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF7"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition5 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition5">
+        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF0"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF3"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition6 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition6">
+        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF0"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF4"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF8"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition7 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition7">
+        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF2"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF4"/>
+        <token-at rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geoTTT/v0#WinCondition0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#WinCondition0">
+        <rdf:type rdf:resource="&geogame;WinCondition"/>
+        <has-condition rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#LogicCondition0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#StartPlaceCondition -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#StartPlaceCondition">
+        <rdf:type rdf:resource="&geogame;PlayerLocationCondition"/>
+        <satisfied-action rdf:resource="&geogame2;main/geottt#StartTokenDisperse"/>
+        <at rdf:resource="&geogame2;main/geottt/StartLocation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#StartTokenDisperse -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#StartTokenDisperse">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <synctime rdf:datatype="&xsd;int">-1</synctime>
+        <enabled rdf:datatype="&xsd;boolean">true</enabled>
+        <tokenhandler-is rdf:resource="&geogame2;main/geottt#StartTokens"/>
+        <at rdf:resource="&geogame2;main/geottt/StartLocation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#StartTokens -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#StartTokens">
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <dispersed-tokens rdf:resource="&geogame2;main/geottt/o"/>
+        <dispersed-tokens rdf:resource="&geogame2;main/geottt/x"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o1 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o1">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o2 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o2">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o3 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o3">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o4 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o4">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o5 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o5">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#o6 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#o6">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x1 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x1">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x2 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x2">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x3 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x3">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x4 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x4">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x5 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x5">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#x6 -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt#x6">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt/StartLocation -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt/StartLocation">
+        <rdf:type rdf:resource="&geo;Point"/>
+        <geo:lat rdf:datatype="&xsd;double">-1.0</geo:lat>
+        <geo:long rdf:datatype="&xsd;double">-1.0</geo:long>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt/o -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt/o">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o1"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o2"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o3"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o4"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o5"/>
+        <has-token rdf:resource="&geogame2;main/geottt#o6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/main/geottt/x -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;main/geottt/x">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x1"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x2"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x3"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x4"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x5"/>
+        <has-token rdf:resource="&geogame2;main/geottt#x6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/test/geottt#GeoTTTInst_lecture_field -->
+
+    <owl:NamedIndividual rdf:about="&geogame2;test/geottt#GeoTTTInst_lecture_field">
+        <rdf:type rdf:resource="&geogame2;main/geottt#GeoTTT"/>
+        <players rdf:datatype="&xsd;integer">2</players>
+        <game_action rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Action00"/>
+        <game_action rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Action01"/>
+        <game_action rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Action02"/>
+        <game_action rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Action10"/>
+        <game_action rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Action11"/>
+        <game_action rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Action12"/>
+        <game_action rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Action20"/>
+        <game_action rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Action21"/>
+        <game_action rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#Action22"/>
+        <game_condition_draw rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#DrawCondition0"/>
+        <game_condition_start rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#StartCondition0"/>
+        <game_condition_win rdf:resource="http://clemensklug.de/uni/ba/geoTTT/v0#WinCondition0"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // General axioms
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description>
+        <rdf:type rdf:resource="&owl;AllDifferent"/>
+        <owl:distinctMembers rdf:parseType="Collection">
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action00"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action01"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action02"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action10"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action11"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action12"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action20"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action21"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Action22"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#DrawCondition0"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location00"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location01"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location02"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location10"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location11"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location12"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location20"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location21"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#Location22"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#LogicCondition0"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#StartCondition0"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TOCondition0"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF0"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF1"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF2"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF3"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF4"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF5"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF6"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF7"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCTF8"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition0"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition1"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition2"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition3"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition4"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition5"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition6"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#TokenCondition7"/>
+            <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geoTTT/v0#WinCondition0"/>
+        </owl:distinctMembers>
+    </rdf:Description>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

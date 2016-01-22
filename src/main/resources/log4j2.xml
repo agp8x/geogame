@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN">
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n"/>
+        </Console>
+        <Console name="CLI" target="SYSTEM_OUT">
+            <PatternLayout pattern="# %msg%n"/>
+        </Console>
+    </Appenders>
+    <Loggers>
+        <Logger name="de.clemensklug.uni.ba.geogame" level="warn" additivity="false">
+            <AppenderRef ref="Console"/>
+        </Logger>
+        <Logger name="de.clemensklug.uni.ba.geogame.ui.cli" level="INFO" additivity="false">
+            <AppenderRef ref="CLI" level="INFO"/>
+        </Logger>
+        <Logger name="de.clemensklug.uni.ba.geogame.ui.net" level="INFO" additivity="false">
+            <AppenderRef ref="Console" level="INFO"/>
+        </Logger>
+        <Root level="error">
+            <AppenderRef ref="Console"/>
+        </Root>
+    </Loggers>
+</Configuration>
