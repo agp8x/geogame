@@ -148,4 +148,12 @@ public class GeoTTTValidatorTest {
         assertTrue(results.isEmpty());
     }
     //TODO: add sane assertions to tests, remove souts
+
+    @Test
+    public void testName() throws Exception {
+        GeoTTTValidator.Rect rect = GeoTTTValidator.extend(new GeoTTTValidator.Rect(new Point(0, 0)), new GeoTTTValidator.Rect(new Point(1, 1)));
+        System.out.println(rect);
+        GeoTTTValidator.Rect r2=GeoTTTValidator.extend(rect, new GeoTTTValidator.Rect(new Point(2,3)));
+        System.out.println(r2);
+    }
 }
