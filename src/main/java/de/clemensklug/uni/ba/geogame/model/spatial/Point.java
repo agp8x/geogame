@@ -1,3 +1,7 @@
+/*
+ *  See the file "LICENSE" for the full license governing this code.
+ */
+
 package de.clemensklug.uni.ba.geogame.model.spatial;
 
 import de.clemensklug.uni.ba.geogame.parser.RCC8;

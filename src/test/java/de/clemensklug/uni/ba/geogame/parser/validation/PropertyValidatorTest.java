@@ -1,3 +1,7 @@
+/*
+ *  See the file "LICENSE" for the full license governing this code.
+ */
+
 package de.clemensklug.uni.ba.geogame.parser.validation;
 
 import de.clemensklug.uni.ba.geogame.parser.Namespace;
