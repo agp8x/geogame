@@ -52,6 +52,7 @@ public class Namespace {
     public static final String PROP_GAME_CONDITION_DRAW = GEOGAME_NAMESPACE + "game_condition_draw";
     public static final String PROP_GAME_CONDITION_START = GEOGAME_NAMESPACE + "game_condition_start";
     public static final String PROP_GAME_CONDITION_WIN = GEOGAME_NAMESPACE + "game_condition_win";
+    public static final String PROP_GAME_TRIGGERING = GEOGAME_NAMESPACE + "triggering";
     //Point
     public final static String PROP_LAT = GEO_NAMESPACE + "lat";
     public final static String PROP_LONG = GEO_NAMESPACE + "long";

@@ -13,6 +13,7 @@ import com.hp.hpl.jena.rdf.model.RDFNode;
 import com.hp.hpl.jena.reasoner.ValidityReport;
 import de.clemensklug.uni.ba.geogame.model.GeogameConfig;
 import de.clemensklug.uni.ba.geogame.model.GeogameObject;
+import de.clemensklug.uni.ba.geogame.model.TriggeringMode;
 import de.clemensklug.uni.ba.geogame.model.actions.Action;
 import de.clemensklug.uni.ba.geogame.model.actions.EchoAction;
 import de.clemensklug.uni.ba.geogame.model.actions.EnableOtherActionAction;
@@ -68,6 +69,7 @@ public class OWLParser implements ConfigParser {
     private OntProperty _gameCondDrawProperty;
     private OntProperty _gameCondStartProperty;
     private OntProperty _gameCondWinProperty;
+    private OntProperty _triggeringProperty;
 
     public OWLParser(String filename) {
         _instanceMap = new HashMap<>();
@@ -116,6 +118,7 @@ public class OWLParser implements ConfigParser {
         _gameCondDrawProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_CONDITION_DRAW);
         _gameCondStartProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_CONDITION_START);
         _gameCondWinProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_CONDITION_WIN);
+        _triggeringProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_TRIGGERING);
     }
 
     public <T extends GeogameObject> List<T> getInstances(String ontClass) {
@@ -196,6 +199,9 @@ public class OWLParser implements ConfigParser {
         g.setDrawCondition((LogicCondition) filteredInstances(individual, _gameCondDrawProperty, Namespace.DRAW_CONDITION).get(0));
         g.setStartCondition((LogicCondition) filteredInstances(individual, _gameCondStartProperty, Namespace.START_CONDITION).get(0));
         g.setWinCondition((LogicCondition) filteredInstances(individual, _gameCondWinProperty, Namespace.WIN_CONDITION).get(0));
+        if (individual.hasProperty(_triggeringProperty)) {
+            g.setTriggeringMode(TriggeringMode.valueOf(individual.getProperty(_triggeringProperty).getString()));
+        }
         return (T) g;
     }
 

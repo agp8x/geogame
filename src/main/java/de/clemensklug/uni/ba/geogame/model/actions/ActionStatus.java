@@ -46,6 +46,8 @@ public class ActionStatus implements Serializable {
         return "ActionStatus{" +
                 "_reference=" + _reference.getName() +
                 ", _ref-active?=" + _reference.isActive() +
+                ", _player=" + _player +
+                ", _event=" + _event +
                 '}';
     }
 }

@@ -7,11 +7,13 @@ package de.clemensklug.uni.ba.geogame;
 import de.clemensklug.uni.ba.geogame.location.LocationProvider;
 import de.clemensklug.uni.ba.geogame.model.GeogameConfig;
 import de.clemensklug.uni.ba.geogame.model.Player;
-import de.clemensklug.uni.ba.geogame.model.spatial.Point;
+import de.clemensklug.uni.ba.geogame.model.TriggeringMode;
 import de.clemensklug.uni.ba.geogame.model.actions.Action;
+import de.clemensklug.uni.ba.geogame.model.actions.EchoAction;
 import de.clemensklug.uni.ba.geogame.model.conditions.Condition;
 import de.clemensklug.uni.ba.geogame.model.conditions.LogicCondition;
 import de.clemensklug.uni.ba.geogame.model.conditions.PlayerLocationCondition;
+import de.clemensklug.uni.ba.geogame.model.spatial.Point;
 import de.clemensklug.uni.ba.geogame.parser.ConfigParser;
 import de.clemensklug.uni.ba.geogame.parser.OWLParser;
 import org.junit.Before;
@@ -22,11 +24,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static org.junit.Assert.*;
-import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 /**
  * @author clemens
@@ -49,7 +50,7 @@ public class GameManagerTest {
     @Before
     public void setUp() throws Exception {
         _l = new Point();
-        List<Point> points=new LinkedList<>();
+        List<Point> points = new LinkedList<>();
         points.add(_l);
         _player = Mockito.mock(Player.class);
         _testAction = Mockito.mock(Action.class);
@@ -77,13 +78,14 @@ public class GameManagerTest {
         }
         _players = new ArrayList<>();
 
-        _gm = GameManager.getInstance(null,null);
+        _gm = GameManager.getInstance(null, null);
         _game = mock(GeogameConfig.class);
         when(_game.getActions()).thenReturn(_actions);
         when(_game.getDrawCondition()).thenReturn(new LogicCondition());
         when(_game.getStartCondition()).thenReturn(new LogicCondition(_conditionsTrue));
         when(_game.getWinCondition()).thenReturn(new LogicCondition(_conditionsTrue));
         when(_game.getPlayerCount()).thenReturn(2);
+        when(_game.getTriggeringMode()).thenReturn(TriggeringMode.WITHIN);
         _gm.setGame(_game);
         _gm.addAllPlayers(_players);
     }
@@ -98,7 +100,7 @@ public class GameManagerTest {
 
     @Test
     public void testIsWonNull() throws Exception {
-        GameManager gm = GameManager.getInstance(null,null);
+        GameManager gm = GameManager.getInstance(null, null);
         assertFalse(gm.isWon());
     }
 
@@ -149,7 +151,7 @@ public class GameManagerTest {
 
     @Test
     public void testStartSetup() throws Exception {
-        GameManager gm =  GameManager.getInstance(null,null);
+        GameManager gm = GameManager.getInstance(null, null);
         assertFalse(gm.startGame());
         gm.addAllPlayers(_players);
         assertFalse(gm.startGame());
@@ -159,7 +161,7 @@ public class GameManagerTest {
 
     @Test
     public void testStartCondition() throws Exception {
-        GameManager gm = GameManager.getInstance(null,null);
+        GameManager gm = GameManager.getInstance(null, null);
         List<Condition> startCond = new ArrayList<>();
         PlayerLocationCondition locationCondition = new PlayerLocationCondition();
         List<Point> p = new ArrayList<>();
@@ -187,7 +189,7 @@ public class GameManagerTest {
     @Test
     public void testStartConditionOWL() throws Exception {
         ConfigParser op = new OWLParser(_path);
-        GameManager gm = GameManager.getInstance(null,null);
+        GameManager gm = GameManager.getInstance(null, null);
         gm.setGame(op.getGeogame("http://clemensklug.de/uni/ba/geogame/test/startcondition#game"));
         Player p1 = new Player("1");
         Player p2 = new Player("2");
@@ -256,7 +258,7 @@ public class GameManagerTest {
 
     @Test
     public void testSetPlayers() throws Exception {
-        GameManager gm = GameManager.getInstance(null,null);
+        GameManager gm = GameManager.getInstance(null, null);
         GeogameConfig _game = mock(GeogameConfig.class);
         when(_game.getActions()).thenReturn(Collections.emptyList());
         when(_game.getDrawCondition()).thenReturn(new LogicCondition());
@@ -268,5 +270,58 @@ public class GameManagerTest {
         assertTrue(GameManager.getPlayers().isEmpty());
         gm.addPlayer(Mockito.mock(Player.class));
         assertFalse(GameManager.getPlayers().isEmpty());
+    }
+
+    @Test
+    public void testVoronoiMode() throws Exception {
+        GameManager gm = GameManager.getInstance(null, null);
+        GeogameConfig _game = mock(GeogameConfig.class);
+        List<Point> points = new LinkedList<>();
+        points.add(new Point(30, 30, 45));
+        points.add(new Point(30, 90, 45));
+        points.add(new Point(90, 20, 45));
+        points.add(new Point(85, 85, 45));
+        List<Action> actions = new LinkedList<>();
+        for (Point p : points) {
+            Action a = new EchoAction();
+            a.setTriggers(points.stream().filter(point -> point == p).collect(Collectors.toList()));
+            a.setName(String.valueOf(points.indexOf(p)));
+            ((EchoAction) a).setText(p.toString() + " - " + a.getName());
+            actions.add(a);
+        }
+        when(_game.getActions()).thenReturn(actions);
+        when(_game.getDrawCondition()).thenReturn(new LogicCondition());
+        LogicCondition t = new LogicCondition();
+        t.setLogicMode(LogicCondition.LogicMode.T);
+        t.setConditions(Collections.emptyList());
+        when(_game.getStartCondition()).thenReturn(t);
+        when(_game.getWinCondition()).thenReturn(new LogicCondition());
+        when(_game.getPlayerCount()).thenReturn(1);
+        when(_game.getTriggeringMode()).thenReturn(TriggeringMode.SIMPLIFIED_VORONOI);
+        gm.setGame(_game);
+        Player p1 = new Player("1");
+        gm.addPlayer(p1);
+        assertTrue(gm.startGame());
+        p1.setPosition(new Point(80, 80, 5));
+        assertTrue(gm.update(p1).get(0).getReference().getName().equals("3"));
+        gm.getActions().forEach(action -> action.setEnabled(true));
+        p1.setPosition(new Point(40, 40, 5));
+        assertTrue(gm.update(p1).get(0).getReference().getName().equals("0"));
+        gm.getActions().forEach(action -> action.setEnabled(true));
+        p1.setPosition(new Point(55, 40, 5));
+        assertTrue(gm.update(p1).get(0).getReference().getName().equals("0"));
+        gm.getActions().forEach(action -> action.setEnabled(true));
+        p1.setPosition(new Point(40, 55, 5));
+        assertTrue(gm.update(p1).get(0).getReference().getName().equals("0"));
+        gm.getActions().forEach(action -> action.setEnabled(true));
+        p1.setPosition(new Point(40, 61, 5));
+        assertTrue(gm.update(p1).get(0).getReference().getName().equals("1"));
+        gm.getActions().forEach(action -> action.setEnabled(true));
+        p1.setPosition(new Point(61, 40, 5));
+        assertTrue(gm.update(p1).get(0).getReference().getName().equals("0"));
+        gm.getActions().forEach(action -> action.setEnabled(true));
+        p1.setPosition(new Point(70, 40, 5));
+        assertTrue(gm.update(p1).get(0).getReference().getName().equals("2"));
+        gm.getActions().forEach(action -> action.setEnabled(true));
     }
 }

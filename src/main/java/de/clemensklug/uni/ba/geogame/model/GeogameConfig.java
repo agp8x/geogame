@@ -25,6 +25,7 @@ public class GeogameConfig implements GeogameObject {
     private LogicCondition _winCondition;
     private List<Action> _actions;
     private List<Player> _players;
+    private TriggeringMode _triggeringMode = TriggeringMode.WITHIN;
 
     @Override
     public String getName() {
@@ -95,5 +96,13 @@ public class GeogameConfig implements GeogameObject {
 
     private Stream<Point> getTriggers(Action action) {
         return action.getTriggers().stream();
+    }
+
+    public TriggeringMode getTriggeringMode() {
+        return _triggeringMode;
+    }
+
+    public void setTriggeringMode(TriggeringMode triggeringMode) {
+        _triggeringMode = triggeringMode;
     }
 }

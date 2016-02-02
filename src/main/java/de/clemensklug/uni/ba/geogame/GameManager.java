@@ -16,9 +16,11 @@ import de.clemensklug.uni.ba.geogame.parser.ConfigParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 /**
  * handle updates of locations, notify actions
@@ -109,22 +111,50 @@ public class GameManager {
         return update(position, player);
     }
 
-    private List<ActionStatus> update(Point position, Player p0) {
+    private List<ActionStatus> update(Point position, Player player) {
         assertGameIsStarted();
         //No concurrency issues here
-        List<ActionStatus> statuses = new ArrayList<>();
-        log.info("updating player " + p0 + "@ " + position);
-        for (Action a : _actions) {
-            if (a.isEnabled()) {
-                if (Point.triggerableIntersectsAny(position, a.getTriggers())) {
-                    log.debug("trigger action " + a.getName());
-                    statuses.add(a.trigger(position, p0));
+        log.info("updating player " + player + "@ " + position);
+        List<Action> actions = _actions.stream().filter(Action::isEnabled).filter(a -> Point.triggerableIntersectsAny(position, a.getTriggers())).collect(Collectors.toList());
+        switch (_game.getTriggeringMode()) {
+            case WITHIN:
+                break;
+            case SINGLE_WITHIN:
+                if (actions.size() > 1) {
+                    actions.clear();
                 }
-            } else {
-                log.debug("->action no longer active: " + a.getName());
-            }
+                break;
+            case SIMPLIFIED_VORONOI:
+                //TODO: implement proper solution (also, this is very nicely nested and totally readable)
+                /*simple approach to save time:
+                    * find closest point of equal/within/withinNTTP Actions,
+                    * order by distance,
+                    * remove all but first (closest)
+                   */
+                //map all actions to their closest point towards the current position
+                Map<Double, Action> actionDistances = actions.stream().collect(
+                        Collectors.toMap(action -> Point.distance(
+                                        action.getTriggers().stream()
+                                                .filter(point -> Point.triggerableIntersects(point, position))
+                                                .sorted(Comparator.comparingDouble(value -> Point.distance(value, position)))
+                                                .findFirst().get(),
+                                        position
+                                ), action -> action
+                        ));
+                if (actionDistances.isEmpty()) {
+                    actions.clear();
+                    break;
+                }
+                Double nearest = actionDistances.keySet().stream().sorted().findFirst().get();
+                //keep only the nearest action
+                actions.removeIf(action -> action != actionDistances.get(nearest));
+                while (actions.size() > 1) {
+                    actions.remove(0);
+                }
+                break;
         }
-        _last = p0;
+        List<ActionStatus> statuses = actions.stream().map(action -> action.trigger(position, player)).collect(Collectors.toList());
+        _last = player;
         if (isDraw() || isWon()) {
             stopGame();
         }
