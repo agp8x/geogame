@@ -109,7 +109,7 @@ public class Point extends SpatialObject {
     }
 
     public static boolean triggerableIntersectsAny(Point ref, Collection<Point> points) {
-        return points.parallelStream().filter(p -> triggerableIntersects(ref, p)).findFirst().isPresent();
+        return points.parallelStream().filter(Point::isEnabled).filter(p -> triggerableIntersects(ref, p)).findFirst().isPresent();
     }
 
     /**

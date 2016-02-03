@@ -262,16 +262,17 @@ public class OWLParser implements ConfigParser {
     }
 
     private <T extends GeogameObject> T buildPoint(Individual individual) {
+        Point point = _mapping.newInstance(Namespace.POINT);
         double latitude = individual.getProperty(_latProperty).getDouble();
         double longitude = individual.getProperty(_lonProperty).getDouble();
-        double radius = 0;
-        if (individual.hasProperty(_radProperty)) {
-            radius = individual.getProperty(_radProperty).getDouble();
-        }
-        Point point = _mapping.newInstance(Namespace.POINT);
         point.setLatitude(latitude);
         point.setLongitude(longitude);
-        point.setRadius(radius);
+        if (individual.hasProperty(_radProperty)) {
+            point.setRadius(individual.getProperty(_radProperty).getDouble());
+        }
+        if (individual.hasProperty(_enabledProperty)) {
+            point.setEnabled(individual.getProperty(_enabledProperty).getBoolean());
+        }
         return (T) point;
     }
 

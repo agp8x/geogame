@@ -18,6 +18,7 @@ import java.util.Map;
  */
 public class TokenDisperser extends BaseHandler implements TokenHandler {
     private List<Token> _tokens = new ArrayList<>();//TODO: concurrency
+    private DisperseMode _mode = DisperseMode.SINGLE;
 
     /**
      * dropped tokens go to the pool of dispersable tokens
@@ -28,7 +29,16 @@ public class TokenDisperser extends BaseHandler implements TokenHandler {
     @Override
     public boolean drop(Player player) {
         log.debug("dropping token on TokenDisperser (" + player + ")");
-        Token param = player.popDisposableItem();
+        Token param = new TokenSet();
+        switch (_mode) {
+            case SINGLE:
+                param = player.popDisposableItem();
+                break;
+            case FLUSH:
+                ((TokenSet) param).setTokens(player.getDisposableInventory());
+                player.getDisposableInventory().clear();
+                break;
+        }
         if (!param.isValid()) {
             return false;
         }
@@ -51,6 +61,10 @@ public class TokenDisperser extends BaseHandler implements TokenHandler {
 
     public void setTokens(List<Token> tokens) {
         _tokens = tokens;
+    }
+
+    public void setMode(DisperseMode mode) {
+        _mode = mode;
     }
 
     @Override
@@ -90,5 +104,10 @@ public class TokenDisperser extends BaseHandler implements TokenHandler {
 
     protected List<Token> getTokenRepository() {
         return _tokens;
+    }
+
+    public enum DisperseMode {
+        SINGLE,
+        FLUSH
     }
 }

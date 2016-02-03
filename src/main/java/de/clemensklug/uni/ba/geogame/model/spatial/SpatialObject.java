@@ -15,6 +15,7 @@ public class SpatialObject implements GeogameObject {
     protected String _name;
     protected double _latitude;
     protected double _longitude;
+    protected boolean _enabled = true;
 
     public SpatialObject() {
     }
@@ -55,4 +56,11 @@ public class SpatialObject implements GeogameObject {
         this._longitude = longitude;
     }
 
+    public boolean isEnabled() {
+        return _enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        _enabled = enabled;
+    }
 }

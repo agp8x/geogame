@@ -1,0 +1,904 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY geogame "http://clemensklug.de/uni/ba/geogame#" >
+    <!ENTITY geosparql "http://www.opengis.net/ont/geosparql#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame/geoTTT#"
+     xml:base="http://clemensklug.de/uni/ba/geogame/geoTTT"
+     xmlns:geosparql="http://www.opengis.net/ont/geosparql#"
+     xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker">
+        <rdfs:comment>TODO: ensure there are always 2 tokens (cards) at each token disperser</rdfs:comment>
+        <owl:imports rdf:resource="file:geogame.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#Action -->
+
+    <rdf:Description rdf:about="&geogame;Action">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;at"/>
+                <owl:onClass rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#StartCondition -->
+
+    <rdf:Description rdf:about="&geogame;StartCondition">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;TimeOutCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;PlayerLocationCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#TokenAction -->
+
+    <rdf:Description rdf:about="&geogame;TokenAction">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;tokenhandler-is"/>
+                <owl:onClass rdf:resource="&geogame;TokenDisperser"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </rdf:Description>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CityPoker -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CityPoker">
+        <rdfs:subClassOf rdf:resource="&geogame;Geogame"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_action"/>
+                <owl:onClass rdf:resource="&geogame;TokenAction"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">5</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CityPokerFieldAction -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CityPokerFieldAction">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenAction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;question"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#AlwaysStart -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#AlwaysStart">
+        <rdf:type rdf:resource="&geogame;LogicCondition"/>
+        <geogame:combination rdf:datatype="&xsd;string">T</geogame:combination>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-ace -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-ace">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-jack -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-jack">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-king -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-king">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-queen -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-queen">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-ten -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-ten">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-ace -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-ace">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-jack -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-jack">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-king -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-king">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-queen -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-queen">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-ten -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-ten">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-ace -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-ace">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-jack -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-jack">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-king -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-king">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-queen -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-queen">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-ten -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-ten">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-ace -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-ace">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-jack -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-jack">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-king -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-king">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-queen -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-queen">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-ten -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-ten">
+        <rdf:type rdf:resource="&geogame;Token"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CityPokergame -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CityPokergame">
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CityPoker"/>
+        <geogame:players rdf:datatype="&xsd;nonNegativeInteger">2</geogame:players>
+        <geogame:game_condition_draw rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#DrawCondition"/>
+        <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Field1"/>
+        <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Field2"/>
+        <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Field3"/>
+        <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Field4"/>
+        <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Field5"/>
+        <geogame:game_condition_start rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#StartCondition"/>
+        <geogame:game_condition_win rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#WinCondition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#DrawCondition -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#DrawCondition">
+        <rdf:type rdf:resource="&geogame;DrawCondition"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#NeverDraw"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field1 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field1">
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CityPokerFieldAction"/>
+        <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field1-disperser"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field2 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field2">
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CityPokerFieldAction"/>
+        <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field2-disperser"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field3 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field3">
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CityPokerFieldAction"/>
+        <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field3-disperser"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field4 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field4">
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CityPokerFieldAction"/>
+        <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field4-disperser"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field5 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field5">
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CityPokerFieldAction"/>
+        <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+        <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field5-disperser"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#InitialTokenDisperse -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#InitialTokenDisperse">
+        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
+        <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#InitialTokens"/>
+        <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#StartLocation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#InitialTokens -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#InitialTokens">
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#player1-initial-tokens"/>
+        <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#player2-initial-tokens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location10 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location10">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location11 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location11">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location12 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location12">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location20 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location20">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location21 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location21">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location22 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location22">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location30 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location30">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location31 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location31">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location32 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location32">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location40 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location40">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location41 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location41">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location42 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location42">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location50 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location50">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location51 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location51">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location52 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location52">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8po rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#NeverDraw -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#NeverDraw">
+        <rdf:type rdf:resource="&geogame;LogicCondition"/>
+        <geogame:combination rdf:datatype="&xsd;string">F</geogame:combination>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#StartCondition -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#StartCondition">
+        <rdf:type rdf:resource="&geogame;StartCondition"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#AlwaysStart"/>
+        <geogame:satisfied-action rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#InitialTokenDisperse"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#TimeOutCounter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#StartLocation -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#StartLocation">
+        <rdf:type rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location10"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location11"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location12"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location20"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location21"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location22"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location30"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location31"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location32"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location40"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location41"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location42"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location50"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location51"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#Location52"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#TimeOutCounter -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#TimeOutCounter">
+        <rdf:type rdf:resource="&geogame;TimeOutCondition"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#WinCondition -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#WinCondition">
+        <rdf:type rdf:resource="&geogame;WinCondition"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#TimeOutCounter"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field1-disperser -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field1-disperser">
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field1-initial-tokens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field1-initial-tokens -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field1-initial-tokens">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field2-disperser -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field2-disperser">
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field2-initial-tokens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field2-initial-tokens -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field2-initial-tokens">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field3-disperser -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field3-disperser">
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field3-initial-tokens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field3-initial-tokens -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field3-initial-tokens">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field4-disperser -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field4-disperser">
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field4-initial-tokens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field4-initial-tokens -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field4-initial-tokens">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field5-disperser -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field5-disperser">
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field5-initial-tokens"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field5-initial-tokens -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field5-initial-tokens">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#player1-initial-tokens -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#player1-initial-tokens">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#player2-initial-tokens -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#player2-initial-tokens">
+        <rdf:type rdf:resource="&geogame;TokenSet"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
