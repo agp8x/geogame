@@ -19,6 +19,7 @@ import java.util.Map;
 public class TokenDisperser extends BaseHandler implements TokenHandler {
     private List<Token> _tokens = new ArrayList<>();//TODO: concurrency
     private DisperseMode _mode = DisperseMode.SINGLE;
+    private int _count = -1;
 
     /**
      * dropped tokens go to the pool of dispersable tokens
@@ -75,8 +76,8 @@ public class TokenDisperser extends BaseHandler implements TokenHandler {
     @Override
     public TokenSet pickup(Player player) {
         log.trace("starting disperse: " + _tokens);
-        if (_tokens.isEmpty()) {
-            log.trace("no tokens, abort!");
+        if (_tokens.isEmpty() || (_count != -1 && _tokens.size() <= _count)) {
+            log.trace("no or to less tokens, return empty set!");
             return new TokenSet();
         }
         Token c = _tokens.get(0);
@@ -104,6 +105,10 @@ public class TokenDisperser extends BaseHandler implements TokenHandler {
 
     protected List<Token> getTokenRepository() {
         return _tokens;
+    }
+
+    public void setCount(int count) {
+        _count = count;
     }
 
     public enum DisperseMode {

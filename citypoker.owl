@@ -20,7 +20,7 @@
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker">
-        <rdfs:comment>TODO: ensure there are always 2 tokens (cards) at each token disperser</rdfs:comment>
+        <rdfs:comment>TODO: is infering EnabledPoint / disabledpoint possible?</rdfs:comment>
         <owl:imports rdf:resource="file:geogame.owl"/>
     </owl:Ontology>
     
@@ -51,27 +51,6 @@
     
 
 
-    <!-- http://clemensklug.de/uni/ba/geogame#StartCondition -->
-
-    <rdf:Description rdf:about="&geogame;StartCondition">
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;has-condition"/>
-                <owl:onClass rdf:resource="&geogame;TimeOutCondition"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;has-condition"/>
-                <owl:onClass rdf:resource="&geogame;PlayerLocationCondition"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-    </rdf:Description>
-    
-
-
     <!-- http://clemensklug.de/uni/ba/geogame#TokenAction -->
 
     <rdf:Description rdf:about="&geogame;TokenAction">
@@ -83,6 +62,43 @@
             </owl:Restriction>
         </rdfs:subClassOf>
     </rdf:Description>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CPStartCondition -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CPStartCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;StartCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;TimeOutCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;LogicCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/citypoker#CPtokenDisperser -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#CPtokenDisperser">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenDisperser"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;tokencount"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;nonNegativeInteger"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
     
 
 
@@ -750,7 +766,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#StartCondition -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#StartCondition">
-        <rdf:type rdf:resource="&geogame;StartCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CPStartCondition"/>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#AlwaysStart"/>
         <geogame:satisfied-action rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#InitialTokenDisperse"/>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#TimeOutCounter"/>
@@ -801,7 +817,8 @@
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field1-disperser -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field1-disperser">
-        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CPtokenDisperser"/>
+        <geogame:tokencount rdf:datatype="&xsd;nonNegativeInteger">2</geogame:tokencount>
         <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field1-initial-tokens"/>
     </owl:NamedIndividual>
     
@@ -818,7 +835,8 @@
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field2-disperser -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field2-disperser">
-        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CPtokenDisperser"/>
+        <geogame:tokencount rdf:datatype="&xsd;nonNegativeInteger">2</geogame:tokencount>
         <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field2-initial-tokens"/>
     </owl:NamedIndividual>
     
@@ -835,7 +853,8 @@
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field3-disperser -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field3-disperser">
-        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CPtokenDisperser"/>
+        <geogame:tokencount rdf:datatype="&xsd;nonNegativeInteger">2</geogame:tokencount>
         <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field3-initial-tokens"/>
     </owl:NamedIndividual>
     
@@ -852,7 +871,8 @@
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field4-disperser -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field4-disperser">
-        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CPtokenDisperser"/>
+        <geogame:tokencount rdf:datatype="&xsd;nonNegativeInteger">2</geogame:tokencount>
         <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field4-initial-tokens"/>
     </owl:NamedIndividual>
     
@@ -869,7 +889,8 @@
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field5-disperser -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field5-disperser">
-        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CPtokenDisperser"/>
+        <geogame:tokencount rdf:datatype="&xsd;nonNegativeInteger">2</geogame:tokencount>
         <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#field5-initial-tokens"/>
     </owl:NamedIndividual>
     

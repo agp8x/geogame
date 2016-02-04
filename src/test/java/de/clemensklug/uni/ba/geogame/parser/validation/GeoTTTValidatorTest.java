@@ -8,9 +8,7 @@ import de.clemensklug.uni.ba.geogame.location.GridLocationProvider;
 import de.clemensklug.uni.ba.geogame.location.LocationProvider;
 import de.clemensklug.uni.ba.geogame.model.spatial.Point;
 import de.clemensklug.uni.ba.geogame.parser.ConfigParser;
-import de.clemensklug.uni.ba.geogame.parser.Namespace;
 import de.clemensklug.uni.ba.geogame.parser.OWLParser;
-import de.clemensklug.uni.ba.geogame.parser.RCC8;
 import org.junit.Before;
 import org.junit.Test;
 

@@ -6,7 +6,6 @@ package de.clemensklug.uni.ba.geogame.parser.validation;
 
 import com.hp.hpl.jena.query.QuerySolution;
 import com.hp.hpl.jena.rdf.model.RDFNode;
-import de.clemensklug.uni.ba.geogame.parser.Cardinality;
 import de.clemensklug.uni.ba.geogame.parser.ConfigParser;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;

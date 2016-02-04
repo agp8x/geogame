@@ -5,7 +5,7 @@
 package de.clemensklug.uni.ba.geogame.model;
 
 import de.clemensklug.uni.ba.geogame.model.spatial.Point;
-import de.clemensklug.uni.ba.geogame.parser.RCC8;
+import de.clemensklug.uni.ba.geogame.parser.validation.RCC8;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

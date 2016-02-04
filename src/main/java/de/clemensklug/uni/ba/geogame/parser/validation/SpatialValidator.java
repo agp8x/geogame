@@ -12,7 +12,6 @@ import de.clemensklug.uni.ba.geogame.model.spatial.Point;
 import de.clemensklug.uni.ba.geogame.model.token.handler.TokenHandler;
 import de.clemensklug.uni.ba.geogame.parser.ConfigParser;
 import de.clemensklug.uni.ba.geogame.parser.Namespace;
-import de.clemensklug.uni.ba.geogame.parser.RCC8;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

@@ -76,6 +76,7 @@ public class Namespace {
     public final static String PROP_SATISFIED = GEOGAME_NAMESPACE + "satisfied-action";
     public static final String PROP_TIMEOUT = GEOGAME_NAMESPACE + "timeout";
     public static final String PROP_ECHOTEXT = GEOGAME_NAMESPACE + "text";
+    public static final String PROP_TOKENCOUNT = GEOGAME_NAMESPACE + "tokencount";
 
     public static boolean isAction(String name) {
         return name.endsWith("Action");

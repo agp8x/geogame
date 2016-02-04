@@ -2,7 +2,7 @@
  *  See the file "LICENSE" for the full license governing this code.
  */
 
-package de.clemensklug.uni.ba.geogame.parser;
+package de.clemensklug.uni.ba.geogame.parser.validation;
 
 /**
  * Created by clemens on 17.12.15.

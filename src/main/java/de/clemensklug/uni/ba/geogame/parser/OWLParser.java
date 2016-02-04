@@ -70,6 +70,7 @@ public class OWLParser implements ConfigParser {
     private OntProperty _gameCondStartProperty;
     private OntProperty _gameCondWinProperty;
     private OntProperty _triggeringProperty;
+    private OntProperty _tokencountProperty;
 
     public OWLParser(String filename) {
         _instanceMap = new HashMap<>();
@@ -119,6 +120,7 @@ public class OWLParser implements ConfigParser {
         _gameCondStartProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_CONDITION_START);
         _gameCondWinProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_CONDITION_WIN);
         _triggeringProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_TRIGGERING);
+        _tokencountProperty = _ontModel.getOntProperty(Namespace.PROP_TOKENCOUNT);
     }
 
     public <T extends GeogameObject> List<T> getInstances(String ontClass) {
@@ -256,6 +258,9 @@ public class OWLParser implements ConfigParser {
                 tokens = Collections.emptyList();
             }
             handler.setTokens(tokens);
+            if (individual.hasProperty(_tokencountProperty)){
+                individual.getProperty(_tokencountProperty).getInt();
+            }
             log.trace("tokens: " + tokens + "; actually used tokens: " + tokens);
         }
         return (T) tokenHandler;

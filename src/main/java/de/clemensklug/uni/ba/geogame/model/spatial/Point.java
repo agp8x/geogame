@@ -4,7 +4,7 @@
 
 package de.clemensklug.uni.ba.geogame.model.spatial;
 
-import de.clemensklug.uni.ba.geogame.parser.RCC8;
+import de.clemensklug.uni.ba.geogame.parser.validation.RCC8;
 
 import java.util.Collection;
 
