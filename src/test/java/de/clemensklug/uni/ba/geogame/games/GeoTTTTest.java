@@ -2,61 +2,64 @@
  *  See the file "LICENSE" for the full license governing this code.
  */
 
-package de.clemensklug.uni.ba.geogame;
+package de.clemensklug.uni.ba.geogame.games;
 
+import de.clemensklug.uni.ba.geogame.GameManager;
 import de.clemensklug.uni.ba.geogame.location.IteratorLocationProvider;
 import de.clemensklug.uni.ba.geogame.location.LocationProvider;
+import de.clemensklug.uni.ba.geogame.location.StaticLocationProvider;
 import de.clemensklug.uni.ba.geogame.model.Player;
 import de.clemensklug.uni.ba.geogame.model.spatial.Point;
+import de.clemensklug.uni.ba.geogame.model.actions.Action;
 import de.clemensklug.uni.ba.geogame.model.actions.ActionStatus;
+import de.clemensklug.uni.ba.geogame.model.actions.TokenAction;
 import de.clemensklug.uni.ba.geogame.model.challenge.Challenge;
 import de.clemensklug.uni.ba.geogame.model.challenge.QuestionChallenge;
 import de.clemensklug.uni.ba.geogame.model.challenge.SyncTimeChallenge;
+import de.clemensklug.uni.ba.geogame.model.token.handler.TokenCapture;
+import de.clemensklug.uni.ba.geogame.model.token.handler.TokenHandler;
 import de.clemensklug.uni.ba.geogame.parser.ConfigParser;
 import de.clemensklug.uni.ba.geogame.parser.OWLParser;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 /**
  * @author clemens
  */
-public class ParallelGeoTTTTest {
-    private final static String _path = "src/test/resources/geoTTT.owl";
+public class GeoTTTTest {
+    private final static String _path = "src/main/resources/geoTTT.owl";
     private static final String _NAME = "http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTgame";
+    private final static String _CHALLENGE_PATH = "src/test/resources/passChallengeST.owl";
     private LocationProvider _locationProvider;
     private GameManager _gameManager;
     private List<Player> _players;
     private Map<Player, List<Point>> _map;
-    private final Logger log = LogManager.getLogger(this.getClass());
     private final Point[][] _points = {
-            {new Point(0, 0), new Point(0, 1), new Point(0, 2)},
-            {new Point(1, 0), new Point(1, 1), new Point(1, 2)},
-            {new Point(2, 0), new Point(2, 1), new Point(2, 2)},
+            {new Point(10, 10), new Point(10, 20), new Point(10, 30)},
+            {new Point(20, 10), new Point(20, 20), new Point(20, 30)},
+            {new Point(30, 10), new Point(30, 20), new Point(30, 30)},
     };
     private final List<List<Point>> _winning = winning_configs();
 
     @Before
     public void setUp() throws Exception {
         ConfigParser cp = new OWLParser(_path);
-        _gameManager = GameManager.getInstance(cp,_NAME);
+        _gameManager = GameManager.getInstance(cp, _NAME);
         _players = new ArrayList<>();
         _map = new HashMap<>();
         for (int i = 0; i < 2; i++) {
             final Player player = new Player(String.valueOf(i));
-            player.setPosition(new Point(-1,-1));
+            player.setPosition(new Point(-10, -10));
             _players.add(player);
         }
         _gameManager.addAllPlayers(_players);
@@ -78,8 +81,25 @@ public class ParallelGeoTTTTest {
         int i = 0;
         while (!_gameManager.isWon()) {
             Player player = _players.get(i % _players.size());
-            gameStep(player);
-
+            List<ActionStatus> statuses = _gameManager.update(_locationProvider, player);
+            for (ActionStatus s : statuses) {
+                if (s.getReference().isActive()) {
+                    for (Challenge c : s.getChallenges()) {
+                        if (c instanceof SyncTimeChallenge) {
+                            final int syncTime = ((SyncTimeChallenge) c).getSyncTime();
+                            try {
+                                Thread.sleep(syncTime * 1100);//add some more time to make sure the timer has finished
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                        if (c instanceof QuestionChallenge) {
+                            ((QuestionChallenge) c).setIsAnswered(true);
+                        }
+                        s.getReference().trigger(s);
+                    }
+                }
+            }
             i++;
             if (i > 10) {
                 fail("did not finish game");
@@ -87,118 +107,15 @@ public class ParallelGeoTTTTest {
         }
     }
 
-    private void gameStep(Player player) {
-        // log.trace(player);
-        List<ActionStatus> statuses = _gameManager.update(_locationProvider, player);
-        for (ActionStatus s : statuses) {
-            if (s.getReference().isActive()) {
-                for (Challenge c : s.getChallenges()) {
-                    if (c instanceof SyncTimeChallenge) {
-                        final int syncTime = ((SyncTimeChallenge) c).getSyncTime();
-                        try {
-                            Thread.sleep(syncTime * 1000);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
-                    }
-                    if (c instanceof QuestionChallenge) {
-                        ((QuestionChallenge) c).setIsAnswered(true);
-                    }
-                    s.getReference().trigger(s);
-                }
-            }
-        }
-    }
-
-    private void runParallelGame() {
-        List<Runnable> runnables = new ArrayList<>();
-        for (Player p : _players) {
-            log.info("new runnable for player");
-            runnables.add(() -> {
-                while (!_gameManager.isWon()) {
-                    gameStep(p);
-                }
-            });
-        }
-        ExecutorService executor = Executors.newScheduledThreadPool(_players.size());
-        for (Runnable command : runnables) {
-            log.info("submit runnable to executor");
-            executor.submit(command);
-        }
-        executor.shutdown();
-        while (!executor.isTerminated()) {
-            try {
-                executor.awaitTermination(1, TimeUnit.MINUTES);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
-
-    private void testParallelGame() {
+    @Test
+    public void testWin0() {
         _map.put(_players.get(0), _winning.get(0));
         _map.put(_players.get(1), _winning.get(1));
         _locationProvider = new IteratorLocationProvider(_map);
-        runParallelGame();
-        try {
-            assertEquals(_players.get(0), _gameManager.getLastPlayer());
-            log.error("player 0 has won parallel");
-        } catch (AssertionError e) {
-            assertEquals(_players.get(1), _gameManager.getLastPlayer());
-            log.error("player 1 has won parallel");
-        }
+        runGame();
+        assertEquals(_players.get(0), _gameManager.getLastPlayer());
     }
 
-    @Test
-    public void testWin0() {
-        testParallelGame();
-    }
-
-    @Test
-    public void testWin1() {
-        testParallelGame();
-    }
-
-    @Test
-    public void testWin2() {
-        testParallelGame();
-    }
-
-    @Test
-    public void testWin3() {
-        testParallelGame();
-    }
-
-    @Test
-    public void testWin4() {
-        testParallelGame();
-    }
-
-    @Test
-    public void testWin5() {
-        testParallelGame();
-    }
-
-    @Test
-    public void testWin6() {
-        testParallelGame();
-    }
-
-    @Test
-    public void testWin7() {
-        testParallelGame();
-    }
-
-    @Test
-    public void testWin8() {
-        testParallelGame();
-    }
-
-    @Test
-    public void testWin9() {
-        testParallelGame();
-    }
-/*
     @Test
     public void testWin1() {
         _map.put(_players.get(0), _winning.get(1));
@@ -278,7 +195,7 @@ public class ParallelGeoTTTTest {
         _locationProvider = new IteratorLocationProvider(_map);
         runGame();
         assertEquals(_players.get(1), _gameManager.getLastPlayer());
-    }*/
+    }
 
     private List<List<Point>> winning_configs() {
         List<List<Point>> list = new ArrayList<>();
@@ -323,6 +240,37 @@ public class ParallelGeoTTTTest {
         list.add(points6);
         list.add(points7);
         return list;
+    }
+
+    @Test
+    public void testPassChallenge() throws Exception {
+        OWLParser parser = new OWLParser(_CHALLENGE_PATH);
+        GameManager gm = GameManager.getInstance(parser, "http://clemensklug.de/uni/ba/geogame/test/timeout#game");
+        Player p = Mockito.mock(Player.class);
+        when(p.getPosition()).thenReturn(new Point());
+        gm.addPlayer(p);
+        TokenHandler th = mock(TokenCapture.class);
+        when(th.drop(p)).thenReturn(true);
+        ((TokenAction) gm.getActions().get(0)).setHandler(th);
+        assertTrue(gm.isStartable());
+        assertTrue(gm.startGame());
+        LocationProvider loc = new StaticLocationProvider(new Point(1, 1));
+        List<ActionStatus> statuses = gm.update(loc, p);
+        assertFalse(statuses.isEmpty());
+        Challenge challenge = statuses.get(0).getChallenges().get(0);
+        assertFalse(challenge.isFinished());
+        Thread.sleep(challenge.getData().getSyncTime() * 1000 + 50);
+        assertTrue(challenge.isFinished());
+        Action reference = statuses.get(0).getReference();
+        assertTrue(reference.isActive());
+        statuses = gm.update(loc, p);
+        verify(th).drop(p);
+        assertFalse(statuses.isEmpty());
+        challenge = statuses.get(0).getChallenges().get(0);
+        assertTrue(challenge.isFinished());
+        reference = statuses.get(0).getReference();
+        assertFalse(reference.isActive());
+        assertFalse(reference.isEnabled());
     }
     /*
 points:

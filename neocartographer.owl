@@ -1,0 +1,165 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame/neocartographer#"
+     xml:base="http://clemensklug.de/uni/ba/geogame/neocartographer"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer">
+        <owl:imports rdf:resource="file:geogame.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCDrawCondition -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCDrawCondition">
+        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#DrawCondition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCInitialDisperserAction -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCInitialDisperserAction">
+        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#TokenAction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#tokenhandler-is"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#TokenDisperser"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCStartCondition -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCStartCondition">
+        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#StartCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#satisfied-action"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCInitialDisperserAction"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#has-condition"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame#TimeOutCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#has-condition"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame#PlayerLocationCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction">
+        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#TokenAction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#question"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#tokenhandler-is"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame#TokenCapture"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCWinCondition -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCWinCondition">
+        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#WinCondition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#Neocartographer -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#Neocartographer">
+        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#Geogame"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#game_condition_win"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCWinCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#game_action"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">16</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#game_condition_start"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCStartCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#game_condition_draw"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCDrawCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>show all/my regions</rdfs:comment>
+        <rdfs:comment>bounding box &lt; 1,5km^2</rdfs:comment>
+        <rdfs:comment>there should not be more than average 350m between two next points</rdfs:comment>
+        <rdfs:comment>win: area/bridge</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#TokenDisperser -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#TokenDisperser"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+
