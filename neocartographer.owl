@@ -47,7 +47,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#tokenhandler-is"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#TokenDisperser"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame#TokenDisperser"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -153,10 +153,6 @@
     </owl:Class>
     
 
-
-    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#TokenDisperser -->
-
-    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#TokenDisperser"/>
 </rdf:RDF>
 
 

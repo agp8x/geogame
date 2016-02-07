@@ -339,7 +339,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialTokenDisp -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialTokenDisp">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#TokenDisperser"/>
+        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
         <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#player1-ITS"/>
         <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#player2-ITS"/>
     </owl:NamedIndividual>
