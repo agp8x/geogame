@@ -21,6 +21,7 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT">
         <rdfs:comment>TODO: add EnableAction, so all Actions are just enabled after the PlayerLocationCondition in StartCondition is satisfied</rdfs:comment>
+        <rdfs:comment>TODO: add more restrictions</rdfs:comment>
         <owl:imports rdf:resource="file:geogame.owl"/>
     </owl:Ontology>
     
@@ -66,7 +67,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;game_action"/>
-                <owl:onClass rdf:resource="&geogame;Action"/>
+                <owl:onClass rdf:resource="&geogame;TokenAction"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">9</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>

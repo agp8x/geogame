@@ -1,0 +1,248 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY owl2xml "http://www.w3.org/2006/12/owl2-xml#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY RCC-Ontology "http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#"
+     xml:base="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:owl2xml="http://www.w3.org/2006/12/owl2-xml#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:RCC-Ontology="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#">
+    <owl:Ontology rdf:about="">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >General Ontology, containing  abstract RCC-8 relations.</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string">Project: xxx</rdfs:comment>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >version 1.0, Jan 2009; adapted from xxx</rdfs:comment>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#connectsWith -->
+
+    <owl:ObjectProperty rdf:about="#connectsWith">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string"></rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#spatiallyRelated"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#disconnectedFrom -->
+
+    <owl:ObjectProperty rdf:about="#disconnectedFrom">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >RCC-8 relation &quot;disconnected&quot;</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#discreteFrom"/>
+        <owl:propertyDisjointWith rdf:resource="#equalTo"/>
+        <owl:propertyDisjointWith rdf:resource="#externallyConnectedTo"/>
+        <owl:propertyDisjointWith rdf:resource="#inverseNonTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#inverseTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#nonTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#partiallyOverlaps"/>
+        <owl:propertyDisjointWith rdf:resource="#tangentialProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#discreteFrom -->
+
+    <owl:ObjectProperty rdf:about="#discreteFrom">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:subPropertyOf rdf:resource="#spatiallyRelated"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#equalTo -->
+
+    <owl:ObjectProperty rdf:about="#equalTo">
+        <rdf:type rdf:resource="&owl;ReflexiveProperty"/>
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >RCC-8 relation &quot;equal&quot;</rdfs:comment>
+        <owl:propertyDisjointWith rdf:resource="#externallyConnectedTo"/>
+        <owl:propertyDisjointWith rdf:resource="#inverseNonTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#inverseTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#nonTangentialProperPartOf"/>
+        <rdfs:subPropertyOf rdf:resource="#overlaps"/>
+        <owl:propertyDisjointWith rdf:resource="#partiallyOverlaps"/>
+        <owl:propertyDisjointWith rdf:resource="#tangentialProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#externallyConnectedTo -->
+
+    <owl:ObjectProperty rdf:about="#externallyConnectedTo">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >RCC-8 relation &quot;externally connected&quot;</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#connectsWith"/>
+        <rdfs:subPropertyOf rdf:resource="#discreteFrom"/>
+        <owl:propertyDisjointWith rdf:resource="#inverseNonTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#inverseTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#nonTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#partiallyOverlaps"/>
+        <owl:propertyDisjointWith rdf:resource="#tangentialProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#inverseNonTangentialProperPartOf -->
+
+    <owl:ObjectProperty rdf:about="#inverseNonTangentialProperPartOf">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >RCC-8 relation &quot;non-tangential proper-part inverse&quot;</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#inverseProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#inverseTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#nonTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#partiallyOverlaps"/>
+        <owl:propertyDisjointWith rdf:resource="#tangentialProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#inverseProperPartOf -->
+
+    <owl:ObjectProperty rdf:about="#inverseProperPartOf">
+        <rdfs:subPropertyOf rdf:resource="#overlapsNotEqual"/>
+        <owl:inverseOf rdf:resource="#properPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#inverseTangentialProperPartOf -->
+
+    <owl:ObjectProperty rdf:about="#inverseTangentialProperPartOf">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >RCC-8 relation &quot;tangential proper-part inverse&quot;</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#inverseProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#nonTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#partiallyOverlaps"/>
+        <owl:propertyDisjointWith rdf:resource="#tangentialProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#nonTangentialProperPartOf -->
+
+    <owl:ObjectProperty rdf:about="#nonTangentialProperPartOf">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >RCC-8 relation &quot;non-tangential proper-part&quot;</rdfs:comment>
+        <owl:inverseOf rdf:resource="#inverseNonTangentialProperPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#partiallyOverlaps"/>
+        <rdfs:subPropertyOf rdf:resource="#properPartOf"/>
+        <owl:propertyDisjointWith rdf:resource="#tangentialProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#overlaps -->
+
+    <owl:ObjectProperty rdf:about="#overlaps">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:subPropertyOf rdf:resource="#connectsWith"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#overlapsNotEqual -->
+
+    <owl:ObjectProperty rdf:about="#overlapsNotEqual">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:subPropertyOf rdf:resource="#overlaps"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#partiallyOverlaps -->
+
+    <owl:ObjectProperty rdf:about="#partiallyOverlaps">
+        <rdf:type rdf:resource="&owl;SymmetricProperty"/>
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >RCC-8 relation &quot;partial overlap&quot;</rdfs:comment>
+        <rdfs:subPropertyOf rdf:resource="#overlapsNotEqual"/>
+        <owl:propertyDisjointWith rdf:resource="#tangentialProperPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#properPartOf -->
+
+    <owl:ObjectProperty rdf:about="#properPartOf">
+        <rdfs:subPropertyOf rdf:resource="#overlapsNotEqual"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#spatiallyRelated -->
+
+    <owl:ObjectProperty rdf:about="#spatiallyRelated">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >Spatial Relations according to the RCC-8 base relations and additional subsuming ObjectProperties.</rdfs:comment>
+        <rdfs:range rdf:resource="&owl;Thing"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#tangentialProperPartOf -->
+
+    <owl:ObjectProperty rdf:about="#tangentialProperPartOf">
+        <rdfs:comment rdf:datatype="&xsd;string"
+            >RCC-8 relation &quot;tangential proper-part&quot;</rdfs:comment>
+        <owl:inverseOf rdf:resource="#inverseTangentialProperPartOf"/>
+        <rdfs:subPropertyOf rdf:resource="#properPartOf"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#Region -->
+
+    <owl:Class rdf:about="#Region"/>
+    
+
+
+    <!-- http://www.w3.org/2002/07/owl#Thing -->
+
+    <owl:Class rdf:about="&owl;Thing"/>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 2.2.1.1138) http://owlapi.sourceforge.net -->
+

@@ -1,0 +1,198 @@
+<?xml version="1.0"?>
+
+
+<!DOCTYPE rdf:RDF [
+    <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
+    <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY geosparql "http://www.opengis.net/ont/geosparql#" >
+    <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
+    <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+]>
+
+
+<rdf:RDF xmlns="http://www.semanticweb.org/agp8x/ontologies/2016/0/untitled-ontology-48#"
+     xml:base="http://www.semanticweb.org/agp8x/ontologies/2016/0/untitled-ontology-48"
+     xmlns:geosparql="http://www.opengis.net/ont/geosparql#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://clemensklug.de/test">
+        <owl:imports rdf:resource="file:imports/geosparql_vocab_all.rdf"/>
+        <owl:imports rdf:resource="file:src/test/resources/rcc8/RCC-Ontology.owl"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#disconnectedFrom -->
+
+    <rdf:Description rdf:about="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#disconnectedFrom">
+        <owl:equivalentProperty rdf:resource="&geosparql;rcc8dc"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#equalTo -->
+
+    <rdf:Description rdf:about="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#equalTo">
+        <owl:equivalentProperty rdf:resource="&geosparql;rcc8eq"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#externallyConnectedTo -->
+
+    <rdf:Description rdf:about="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#externallyConnectedTo">
+        <owl:equivalentProperty rdf:resource="&geosparql;rcc8ec"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#inverseNonTangentialProperPartOf -->
+
+    <rdf:Description rdf:about="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#inverseNonTangentialProperPartOf">
+        <owl:equivalentProperty rdf:resource="&geosparql;rcc8ntppi"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#inverseTangentialProperPartOf -->
+
+    <rdf:Description rdf:about="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#inverseTangentialProperPartOf">
+        <owl:equivalentProperty rdf:resource="&geosparql;rcc8tppi"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#nonTangentialProperPartOf -->
+
+    <rdf:Description rdf:about="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#nonTangentialProperPartOf">
+        <owl:equivalentProperty rdf:resource="&geosparql;rcc8ntpp"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#partiallyOverlaps -->
+
+    <rdf:Description rdf:about="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#partiallyOverlaps">
+        <owl:equivalentProperty rdf:resource="&geosparql;rcc8po"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#tangentialProperPartOf -->
+
+    <rdf:Description rdf:about="http://www.informatik.uni-bremen.de/~joana/ontology/modSpace/RCC-Ontology.owl#tangentialProperPartOf">
+        <owl:equivalentProperty rdf:resource="&geosparql;rcc8tpp"/>
+    </rdf:Description>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#rcc8dc -->
+
+    <rdf:Description rdf:about="&geosparql;rcc8dc"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#rcc8ec -->
+
+    <rdf:Description rdf:about="&geosparql;rcc8ec"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#rcc8eq -->
+
+    <rdf:Description rdf:about="&geosparql;rcc8eq"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#rcc8ntpp -->
+
+    <rdf:Description rdf:about="&geosparql;rcc8ntpp"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#rcc8ntppi -->
+
+    <rdf:Description rdf:about="&geosparql;rcc8ntppi"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#rcc8po -->
+
+    <rdf:Description rdf:about="&geosparql;rcc8po"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#rcc8tpp -->
+
+    <rdf:Description rdf:about="&geosparql;rcc8tpp"/>
+    
+
+
+    <!-- http://www.opengis.net/ont/geosparql#rcc8tppi -->
+
+    <rdf:Description rdf:about="&geosparql;rcc8tppi"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://clemensklug.de/test#geo0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/test#geo0">
+        <rdf:type rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
+        <geosparql:rcc8eq rdf:resource="http://clemensklug.de/test#geo3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/test#geo1 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/test#geo1">
+        <rdf:type rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/test#geo3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/test#geo2 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/test#geo2">
+        <rdf:type rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
+        <geosparql:rcc8eq rdf:resource="http://clemensklug.de/test#geo1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/test#geo3 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/test#geo3">
+        <rdf:type rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 3.5.1) http://owlapi.sourceforge.net -->
+

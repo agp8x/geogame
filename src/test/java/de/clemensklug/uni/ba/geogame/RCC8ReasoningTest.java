@@ -25,6 +25,7 @@ import java.io.FileInputStream;
 public class RCC8ReasoningTest {
     private OntModel _ontModel;
     private final String _path = "src/test/resources/rcc8/geosparql.owl";
+    private final String _path2 = "src/test/resources/rcc8/geosparql2.owl";
 
     @Test
     public void testPelletRCC8() throws Exception {
@@ -33,7 +34,24 @@ public class RCC8ReasoningTest {
         _ontModel.read(new FileInputStream(new File(_path)), null, "RDF/XML");
         ((PelletInfGraph) _ontModel.getGraph()).classify();
         for(Resource i:_ontModel.listSubjects().toList()){
-            if (!i.toString().contains("agp8x")){
+            if (!i.toString().contains("clemensklug.de")){
+                continue;
+            }
+            System.out.println(i);
+            for(Statement s:i.listProperties().toList()){
+                System.out.print("\t");
+                System.out.println(s);
+            }
+        }
+    }
+    @Test
+    public void testPelletRCC82() throws Exception {
+        _ontModel = ModelFactory.createOntologyModel(PelletReasonerFactory.THE_SPEC );
+        _ontModel.setDynamicImports(true);
+        _ontModel.read(new FileInputStream(new File(_path2)), null, "RDF/XML");
+        ((PelletInfGraph) _ontModel.getGraph()).classify();
+        for(Resource i:_ontModel.listSubjects().toList()){
+            if (!i.toString().contains("clemensklug.de")){
                 continue;
             }
             System.out.println(i);

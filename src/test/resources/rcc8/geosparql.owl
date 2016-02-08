@@ -17,7 +17,7 @@
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://agp8x.org/test">
+    <owl:Ontology rdf:about="http://clemensklug.de/test">
         <owl:imports rdf:resource="file:imports/geosparql_vocab_all.rdf"/>
     </owl:Ontology>
     
@@ -34,36 +34,36 @@
     
 
 
-    <!-- http://agp8x.org/test#geo0 -->
+    <!-- http://clemensklug.de/test#geo0 -->
 
-    <owl:NamedIndividual rdf:about="http://agp8x.org/test#geo0">
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/test#geo0">
         <rdf:type rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
-        <geosparql:rcc8eq rdf:resource="http://agp8x.org/test#geo3"/>
+        <geosparql:rcc8eq rdf:resource="http://clemensklug.de/test#geo3"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://agp8x.org/test#geo1 -->
+    <!-- http://clemensklug.de/test#geo1 -->
 
-    <owl:NamedIndividual rdf:about="http://agp8x.org/test#geo1">
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/test#geo1">
         <rdf:type rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
-        <geosparql:rcc8dc rdf:resource="http://agp8x.org/test#geo3"/>
+        <geosparql:rcc8dc rdf:resource="http://clemensklug.de/test#geo3"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://agp8x.org/test#geo2 -->
+    <!-- http://clemensklug.de/test#geo2 -->
 
-    <owl:NamedIndividual rdf:about="http://agp8x.org/test#geo2">
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/test#geo2">
         <rdf:type rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
-        <geosparql:rcc8eq rdf:resource="http://agp8x.org/test#geo1"/>
+        <geosparql:rcc8eq rdf:resource="http://clemensklug.de/test#geo1"/>
     </owl:NamedIndividual>
     
 
 
-    <!-- http://agp8x.org/test#geo3 -->
+    <!-- http://clemensklug.de/test#geo3 -->
 
-    <owl:NamedIndividual rdf:about="http://agp8x.org/test#geo3">
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/test#geo3">
         <rdf:type rdf:resource="http://www.opengis.net/ont/sf#Geometry"/>
     </owl:NamedIndividual>
 </rdf:RDF>
