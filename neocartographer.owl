@@ -17,6 +17,8 @@
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer">
         <owl:imports rdf:resource="file:geogame.owl"/>
+        <rdfs:comment>TODO: add more restrictions</rdfs:comment>
+        <rdfs:comment>TODO: add geoTTT-like lines (bridges), so we can calculate avg distances between two neighbors</rdfs:comment>
     </owl:Ontology>
     
 

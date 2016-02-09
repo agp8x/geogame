@@ -45,14 +45,21 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;has-condition"/>
-                <owl:onClass rdf:resource="&geogame;PlayerLocationCondition"/>
+                <owl:onClass rdf:resource="&geogame;TimeOutCondition"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;has-condition"/>
-                <owl:onClass rdf:resource="&geogame;TimeOutCondition"/>
+                <owl:onClass rdf:resource="&geogame;PlayerLocationCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;satisfied-action"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTDisperse"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -69,6 +76,118 @@
                 <owl:onProperty rdf:resource="&geogame;game_action"/>
                 <owl:onClass rdf:resource="&geogame;TokenAction"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">9</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_condition_start"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GTTTstartCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenAction"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;tokenhandler-is"/>
+                <owl:onClass rdf:resource="&geogame;TokenCapture"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;question"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTDisperse -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTDisperse">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenAction"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTDraw -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTDraw">
+        <rdfs:subClassOf rdf:resource="&geogame;DrawCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;TimeOutCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTGroupLines -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTGroupLines">
+        <rdfs:subClassOf rdf:resource="&geogame;LogicCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">8</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;combination"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTstartplace -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTstartplace">
+        <rdfs:subClassOf rdf:resource="&geogame;PlayerLocationCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;satisfied-action"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTDisperse"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenCondition"/>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTwin -->
+
+    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTwin">
+        <rdfs:subClassOf rdf:resource="&geogame;WinCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTGroupLines"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -89,7 +208,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action00 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action00">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#Location00"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture0"/>
@@ -100,7 +219,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action01 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action01">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#Location01"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture1"/>
@@ -111,7 +230,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action02 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action02">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#Location02"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture2"/>
@@ -122,7 +241,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action10 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action10">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#Location10"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture3"/>
@@ -133,7 +252,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action11 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action11">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#Location11"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture4"/>
@@ -144,7 +263,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action12 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action12">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#Location12"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture5"/>
@@ -155,7 +274,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action20 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action20">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#Location20"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture6"/>
@@ -166,7 +285,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action21 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action21">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#Location21"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture7"/>
@@ -177,7 +296,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action22 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action22">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTAction"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#Location22"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture8"/>
@@ -188,7 +307,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#DrawCondition -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#DrawCondition">
-        <rdf:type rdf:resource="&geogame;DrawCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTDraw"/>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TimeOutCounter"/>
     </owl:NamedIndividual>
     
@@ -218,7 +337,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#InitialTokenDisperse -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#InitialTokenDisperse">
-        <rdf:type rdf:resource="&geogame;TokenAction"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTDisperse"/>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#InitialTokens"/>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#StartLocation"/>
@@ -402,7 +521,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#StartPlaceCondition -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#StartPlaceCondition">
-        <rdf:type rdf:resource="&geogame;PlayerLocationCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTstartplace"/>
         <geogame:satisfied-action rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#InitialTokenDisperse"/>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#StartLocation"/>
     </owl:NamedIndividual>
@@ -616,7 +735,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinCondition -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinCondition">
-        <rdf:type rdf:resource="&geogame;WinCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTwin"/>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningConditions"/>
     </owl:NamedIndividual>
     
@@ -625,7 +744,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinningConditions -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningConditions">
-        <rdf:type rdf:resource="&geogame;LogicCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTGroupLines"/>
         <geogame:combination rdf:datatype="&xsd;string">OR</geogame:combination>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow0"/>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow1"/>
@@ -642,7 +761,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow0 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow0">
-        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture6"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture7"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture8"/>
@@ -653,7 +772,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow1 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow1">
-        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture3"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture4"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture5"/>
@@ -664,7 +783,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow2 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow2">
-        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture0"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture1"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture2"/>
@@ -675,7 +794,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow3 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow3">
-        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture2"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture5"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture8"/>
@@ -686,7 +805,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow4 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow4">
-        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture1"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture4"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture7"/>
@@ -697,7 +816,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow5 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow5">
-        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture0"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture3"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture6"/>
@@ -708,7 +827,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow6 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow6">
-        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture0"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture4"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture8"/>
@@ -719,7 +838,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow7 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#WinningRow7">
-        <rdf:type rdf:resource="&geogame;TokenCondition"/>
+        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#GeoTTTtokenCond"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture2"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture4"/>
         <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/geoTTT#TokenCapture6"/>
