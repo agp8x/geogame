@@ -61,6 +61,16 @@
     
 
 
+    <!-- http://clemensklug.de/uni/ba/geogame#boundingBox -->
+
+    <owl:ObjectProperty rdf:about="&geogame;boundingBox">
+        <rdfs:domain rdf:resource="&geogame;Geogame"/>
+        <rdfs:subPropertyOf rdf:resource="&geogame;at"/>
+        <rdfs:range rdf:resource="&geo;Point"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://clemensklug.de/uni/ba/geogame#disables -->
 
     <owl:ObjectProperty rdf:about="&geogame;disables">
@@ -164,6 +174,7 @@
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
                     <rdf:Description rdf:about="&geogame;Player"/>
+                    <rdf:Description rdf:about="&geogame;TokenHandler"/>
                     <rdf:Description rdf:about="&geogame;TokenSet"/>
                 </owl:unionOf>
             </owl:Class>
@@ -214,6 +225,24 @@
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#boundingBoxSizeX -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;boundingBoxSizeX">
+        <rdfs:domain rdf:resource="&geogame;Geogame"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame#boundingBoxSizeY -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;boundingBoxSizeY">
+        <rdfs:domain rdf:resource="&geogame;Geogame"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
     
 
 
@@ -302,6 +331,15 @@
     
 
 
+    <!-- http://clemensklug.de/uni/ba/geogame#tokenConditionMaxIntermediateDistance -->
+
+    <owl:DatatypeProperty rdf:about="&geogame;tokenConditionMaxIntermediateDistance">
+        <rdfs:domain rdf:resource="&geogame;Geogame"/>
+        <rdfs:range rdf:resource="&xsd;integer"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- http://clemensklug.de/uni/ba/geogame#tokencount -->
 
     <owl:DatatypeProperty rdf:about="&geogame;tokencount">
@@ -338,8 +376,9 @@
         <rdfs:subClassOf rdf:resource="&geogame;GeoGameObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;at"/>
-                <owl:someValuesFrom rdf:resource="&geo;Point"/>
+                <owl:onProperty rdf:resource="&geogame;synctime"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -357,9 +396,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;synctime"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onDataRange rdf:resource="&xsd;integer"/>
+                <owl:onProperty rdf:resource="&geogame;at"/>
+                <owl:someValuesFrom rdf:resource="&geo;Point"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -409,13 +447,13 @@
         <rdfs:subClassOf rdf:resource="&geogame;Action"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;enables"/>
+                <owl:onProperty rdf:resource="&geogame;disables"/>
                 <owl:allValuesFrom rdf:resource="&geogame;Action"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;disables"/>
+                <owl:onProperty rdf:resource="&geogame;enables"/>
                 <owl:allValuesFrom rdf:resource="&geogame;Action"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -435,6 +473,12 @@
         <rdfs:subClassOf rdf:resource="&geogame;GeoGameObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;boundingBox"/>
+                <owl:allValuesFrom rdf:resource="&geo;Point"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;players"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;nonNegativeInteger"/>
@@ -442,9 +486,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;game_condition_start"/>
-                <owl:onClass rdf:resource="&geogame;StartCondition"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onProperty rdf:resource="&geogame;boundingBoxSizeY"/>
+                <owl:allValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -456,6 +499,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_action"/>
+                <owl:someValuesFrom rdf:resource="&geogame;Action"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;game_condition_draw"/>
                 <owl:onClass rdf:resource="&geogame;DrawCondition"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -463,8 +512,21 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;game_action"/>
-                <owl:someValuesFrom rdf:resource="&geogame;Action"/>
+                <owl:onProperty rdf:resource="&geogame;boundingBoxSizeX"/>
+                <owl:allValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_condition_start"/>
+                <owl:onClass rdf:resource="&geogame;StartCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;tokenConditionMaxIntermediateDistance"/>
+                <owl:allValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -622,6 +684,12 @@
 
     <owl:Class rdf:about="&geogame;TokenHandler">
         <rdfs:subClassOf rdf:resource="&geogame;GeoGameObject"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-token"/>
+                <owl:allValuesFrom rdf:resource="&geogame;Token"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 

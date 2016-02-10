@@ -4,21 +4,25 @@
 <!DOCTYPE rdf:RDF [
     <!ENTITY owl "http://www.w3.org/2002/07/owl#" >
     <!ENTITY xsd "http://www.w3.org/2001/XMLSchema#" >
+    <!ENTITY geogame "http://clemensklug.de/uni/ba/geogame#" >
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY neocart "http://clemensklug.de/uni/ba/geogame/neocartographer#" >
 ]>
 
 
 <rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame/neocartographer#"
      xml:base="http://clemensklug.de/uni/ba/geogame/neocartographer"
+     xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:neocart="http://clemensklug.de/uni/ba/geogame/neocartographer#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer">
-        <owl:imports rdf:resource="file:geogame.owl"/>
-        <rdfs:comment>TODO: add more restrictions</rdfs:comment>
         <rdfs:comment>TODO: add geoTTT-like lines (bridges), so we can calculate avg distances between two neighbors</rdfs:comment>
+        <rdfs:comment>TODO: add more restrictions</rdfs:comment>
+        <owl:imports rdf:resource="file:geogame.owl"/>
     </owl:Ontology>
     
 
@@ -36,20 +40,27 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCDrawCondition -->
 
-    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCDrawCondition">
-        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#DrawCondition"/>
+    <owl:Class rdf:about="&neocart;NCDrawCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;DrawCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;LogicCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
 
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCInitialDisperserAction -->
 
-    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCInitialDisperserAction">
-        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#TokenAction"/>
+    <owl:Class rdf:about="&neocart;NCInitialDisperserAction">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenAction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#tokenhandler-is"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame#TokenDisperser"/>
+                <owl:onProperty rdf:resource="&geogame;tokenhandler-is"/>
+                <owl:onClass rdf:resource="&geogame;TokenDisperser"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -59,26 +70,26 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCStartCondition -->
 
-    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCStartCondition">
-        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#StartCondition"/>
+    <owl:Class rdf:about="&neocart;NCStartCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;StartCondition"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#satisfied-action"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCInitialDisperserAction"/>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;TimeOutCondition"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#has-condition"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame#TimeOutCondition"/>
+                <owl:onProperty rdf:resource="&geogame;satisfied-action"/>
+                <owl:onClass rdf:resource="&neocart;NCInitialDisperserAction"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#has-condition"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame#PlayerLocationCondition"/>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;PlayerLocationCondition"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -88,19 +99,19 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction -->
 
-    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction">
-        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#TokenAction"/>
+    <owl:Class rdf:about="&neocart;NCTokenAction">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenAction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#question"/>
+                <owl:onProperty rdf:resource="&geogame;question"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#tokenhandler-is"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame#TokenCapture"/>
+                <owl:onProperty rdf:resource="&geogame;tokenhandler-is"/>
+                <owl:onClass rdf:resource="&geogame;TokenCapture"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -110,51 +121,175 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCWinCondition -->
 
-    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#NCWinCondition">
-        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#WinCondition"/>
+    <owl:Class rdf:about="&neocart;NCWinCondition">
+        <rdfs:subClassOf rdf:resource="&geogame;WinCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&neocart;NCareaORbridge"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCarea -->
+
+    <owl:Class rdf:about="&neocart;NCarea">
+        <rdfs:subClassOf rdf:resource="&geogame;LogicCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&geogame;TimeOutCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>use combination:F to disable area mode</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCareaORbridge -->
+
+    <owl:Class rdf:about="&neocart;NCareaORbridge">
+        <rdfs:subClassOf rdf:resource="&geogame;LogicCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&neocart;NCarea"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&neocart;NCbridges"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;combination"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>combination has to be OR</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCbridges -->
+
+    <owl:Class rdf:about="&neocart;NCbridges">
+        <rdfs:subClassOf rdf:resource="&geogame;LogicCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;combination"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&neocart;NCtokenCond"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">8</owl:minQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;has-condition"/>
+                <owl:onClass rdf:resource="&neocart;NCtokenCond"/>
+                <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">30</owl:maxQualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment>use combination:F to disable bridge mode</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCtokenCond -->
+
+    <owl:Class rdf:about="&neocart;NCtokenCond">
+        <rdfs:subClassOf rdf:resource="&geogame;TokenCondition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;token-at"/>
+                <owl:onClass rdf:resource="&geogame;TokenCapture"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
 
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#Neocartographer -->
 
-    <owl:Class rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer#Neocartographer">
-        <rdfs:subClassOf rdf:resource="http://clemensklug.de/uni/ba/geogame#Geogame"/>
+    <owl:Class rdf:about="&neocart;Neocartographer">
+        <rdfs:subClassOf rdf:resource="&geogame;Geogame"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#game_condition_win"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCWinCondition"/>
+                <owl:onProperty rdf:resource="&geogame;tokenConditionMaxIntermediateDistance"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;boundingBoxSizeY"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_condition_draw"/>
+                <owl:onClass rdf:resource="&neocart;NCDrawCondition"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#game_action"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+                <owl:onProperty rdf:resource="&geogame;boundingBox"/>
+                <owl:onClass rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">2</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;boundingBoxSizeX"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_action"/>
+                <owl:onClass rdf:resource="&neocart;NCTokenAction"/>
                 <owl:maxQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">16</owl:maxQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#game_condition_start"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCStartCondition"/>
+                <owl:onProperty rdf:resource="&geogame;game_condition_start"/>
+                <owl:onClass rdf:resource="&neocart;NCStartCondition"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://clemensklug.de/uni/ba/geogame#game_condition_draw"/>
-                <owl:onClass rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCDrawCondition"/>
+                <owl:onProperty rdf:resource="&geogame;game_condition_win"/>
+                <owl:onClass rdf:resource="&neocart;NCWinCondition"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
-        <rdfs:comment>show all/my regions</rdfs:comment>
-        <rdfs:comment>bounding box &lt; 1,5km^2</rdfs:comment>
         <rdfs:comment>there should not be more than average 350m between two next points</rdfs:comment>
         <rdfs:comment>win: area/bridge</rdfs:comment>
+        <rdfs:comment>show all/my regions</rdfs:comment>
+        <rdfs:comment>bounding box &lt; 1,5km^2</rdfs:comment>
     </owl:Class>
-    
-
 </rdf:RDF>
 
 

@@ -8,6 +8,7 @@
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY wgs84_pos "http://www.w3.org/2003/01/geo/wgs84_pos#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY neocart "http://clemensklug.de/uni/ba/geogame/neocartographer#" >
 ]>
 
 
@@ -17,6 +18,7 @@
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:neocart="http://clemensklug.de/uni/ba/geogame/neocartographer#"
      xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
     <owl:Ontology rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance">
@@ -36,10 +38,135 @@
     
 
 
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge0">
+        <rdf:type rdf:resource="&neocart;NCtokenCond"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField0"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField1"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge1 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge1">
+        <rdf:type rdf:resource="&neocart;NCtokenCond"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField1"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField2"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField3"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge2 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge2">
+        <rdf:type rdf:resource="&neocart;NCtokenCond"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField2"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField3"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField4"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge3 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge3">
+        <rdf:type rdf:resource="&neocart;NCtokenCond"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField3"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField4"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField5"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge4 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge4">
+        <rdf:type rdf:resource="&neocart;NCtokenCond"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField4"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField5"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField6"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge5 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge5">
+        <rdf:type rdf:resource="&neocart;NCtokenCond"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField5"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField6"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField7"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge6 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge6">
+        <rdf:type rdf:resource="&neocart;NCtokenCond"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField6"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField7"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField8"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge7 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge7">
+        <rdf:type rdf:resource="&neocart;NCtokenCond"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField0"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField7"/>
+        <geogame:token-at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField8"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCor -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCor">
+        <rdf:type rdf:resource="&neocart;NCareaORbridge"/>
+        <geogame:combination rdf:datatype="&xsd;string">OR</geogame:combination>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#area"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#bridges"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#area -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#area">
+        <rdf:type rdf:resource="&neocart;NCarea"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncTimeout"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#bridges -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#bridges">
+        <rdf:type rdf:resource="&neocart;NCbridges"/>
+        <geogame:combination rdf:datatype="&xsd;string">F</geogame:combination>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge0"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge1"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge2"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge3"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge4"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge5"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge6"/>
+        <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#NCbridge7"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction0 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction0">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+        <rdf:type rdf:resource="&neocart;NCTokenAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">60</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
@@ -52,7 +179,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction1 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction1">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+        <rdf:type rdf:resource="&neocart;NCTokenAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">60</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
@@ -65,7 +192,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction2 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction2">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+        <rdf:type rdf:resource="&neocart;NCTokenAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">60</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
@@ -78,7 +205,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction3 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction3">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+        <rdf:type rdf:resource="&neocart;NCTokenAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">60</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
@@ -91,7 +218,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction4 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction4">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+        <rdf:type rdf:resource="&neocart;NCTokenAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">60</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
@@ -104,7 +231,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction5 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction5">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+        <rdf:type rdf:resource="&neocart;NCTokenAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">60</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
@@ -117,7 +244,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction6 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction6">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+        <rdf:type rdf:resource="&neocart;NCTokenAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">60</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
@@ -130,7 +257,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction7 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction7">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+        <rdf:type rdf:resource="&neocart;NCTokenAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">60</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
@@ -143,12 +270,32 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction8 -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction8">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCTokenAction"/>
+        <rdf:type rdf:resource="&neocart;NCTokenAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">60</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:at rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncCache8"/>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncField8"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncBB0 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncBB0">
+        <rdf:type rdf:resource="&wgs84_pos;Point"/>
+        <wgs84_pos:long rdf:datatype="&xsd;double">10.0</wgs84_pos:long>
+        <wgs84_pos:lat rdf:datatype="&xsd;double">10.0</wgs84_pos:lat>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncBB1 -->
+
+    <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncBB1">
+        <rdf:type rdf:resource="&wgs84_pos;Point"/>
+        <wgs84_pos:lat rdf:datatype="&xsd;double">100.0</wgs84_pos:lat>
+        <wgs84_pos:long rdf:datatype="&xsd;double">100.0</wgs84_pos:long>
     </owl:NamedIndividual>
     
 
@@ -246,7 +393,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncDraw -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncDraw">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCDrawCondition"/>
+        <rdf:type rdf:resource="&neocart;NCDrawCondition"/>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncNever"/>
     </owl:NamedIndividual>
     
@@ -327,7 +474,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialDPA -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialDPA">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCInitialDisperserAction"/>
+        <rdf:type rdf:resource="&neocart;NCInitialDisperserAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">0</geogame:synctime>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialTokenDisp"/>
@@ -349,8 +496,11 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInst -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInst">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#Neocartographer"/>
+        <rdf:type rdf:resource="&neocart;Neocartographer"/>
+        <geogame:boundingBoxSizeY rdf:datatype="&xsd;integer">1500</geogame:boundingBoxSizeY>
+        <geogame:boundingBoxSizeX rdf:datatype="&xsd;integer">1500</geogame:boundingBoxSizeX>
         <geogame:players rdf:datatype="&xsd;int">2</geogame:players>
+        <geogame:tokenConditionMaxIntermediateDistance rdf:datatype="&xsd;integer">350</geogame:tokenConditionMaxIntermediateDistance>
         <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction0"/>
         <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction1"/>
         <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction2"/>
@@ -360,6 +510,8 @@
         <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction6"/>
         <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction7"/>
         <geogame:game_action rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncAction8"/>
+        <geogame:boundingBox rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncBB0"/>
+        <geogame:boundingBox rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncBB1"/>
         <geogame:game_condition_draw rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncDraw"/>
         <geogame:game_condition_start rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncStart"/>
         <geogame:game_condition_win rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncWin"/>
@@ -388,7 +540,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncStart -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncStart">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCStartCondition"/>
+        <rdf:type rdf:resource="&neocart;NCStartCondition"/>
         <geogame:satisfied-action rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialDPA"/>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncPlayerAtStart"/>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncTimeout"/>
@@ -418,7 +570,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncWin -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncWin">
-        <rdf:type rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer#NCWinCondition"/>
+        <rdf:type rdf:resource="&neocart;NCWinCondition"/>
         <geogame:has-condition rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncTimeout"/>
     </owl:NamedIndividual>
     

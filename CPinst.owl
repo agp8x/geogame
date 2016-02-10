@@ -9,11 +9,13 @@
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY wgs84_pos "http://www.w3.org/2003/01/geo/wgs84_pos#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY citypoker "http://clemensklug.de/uni/ba/geogame/citypoker#" >
 ]>
 
 
 <rdf:RDF xmlns="http://clemensklug.de/uni/ba/geogame/citypoker/CPsampleInstance#"
      xml:base="http://clemensklug.de/uni/ba/geogame/citypoker/CPsampleInstance"
+     xmlns:citypoker="http://clemensklug.de/uni/ba/geogame/citypoker#"
      xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
@@ -40,7 +42,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field1 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field1">
+    <rdf:Description rdf:about="&citypoker;Field1">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
@@ -49,7 +51,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field2 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field2">
+    <rdf:Description rdf:about="&citypoker;Field2">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo2</geogame:question>
     </rdf:Description>
@@ -58,7 +60,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field3 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field3">
+    <rdf:Description rdf:about="&citypoker;Field3">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo3</geogame:question>
     </rdf:Description>
@@ -67,7 +69,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field4 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field4">
+    <rdf:Description rdf:about="&citypoker;Field4">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo4</geogame:question>
     </rdf:Description>
@@ -76,7 +78,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Field5 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Field5">
+    <rdf:Description rdf:about="&citypoker;Field5">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">foo5</geogame:question>
     </rdf:Description>
@@ -85,7 +87,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#InitialTokenDisperse -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#InitialTokenDisperse">
+    <rdf:Description rdf:about="&citypoker;InitialTokenDisperse">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
         <geogame:question rdf:datatype="&xsd;string">True (always true)</geogame:question>
     </rdf:Description>
@@ -94,7 +96,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location10 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location10">
+    <rdf:Description rdf:about="&citypoker;Location10">
         <wgs84_pos:long rdf:datatype="&xsd;double">10.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">10.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -104,7 +106,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location11 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location11">
+    <rdf:Description rdf:about="&citypoker;Location11">
         <wgs84_pos:long rdf:datatype="&xsd;double">10.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">13.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -115,7 +117,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location12 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location12">
+    <rdf:Description rdf:about="&citypoker;Location12">
         <wgs84_pos:long rdf:datatype="&xsd;double">10.0</wgs84_pos:long>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
         <wgs84_pos:lat rdf:datatype="&xsd;double">7.0</wgs84_pos:lat>
@@ -126,7 +128,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location20 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location20">
+    <rdf:Description rdf:about="&citypoker;Location20">
         <wgs84_pos:long rdf:datatype="&xsd;double">20.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">20.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -136,7 +138,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location21 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location21">
+    <rdf:Description rdf:about="&citypoker;Location21">
         <wgs84_pos:long rdf:datatype="&xsd;double">20.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">23.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -147,7 +149,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location22 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location22">
+    <rdf:Description rdf:about="&citypoker;Location22">
         <wgs84_pos:lat rdf:datatype="&xsd;double">17.0</wgs84_pos:lat>
         <wgs84_pos:long rdf:datatype="&xsd;double">20.0</wgs84_pos:long>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -158,7 +160,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location30 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location30">
+    <rdf:Description rdf:about="&citypoker;Location30">
         <wgs84_pos:lat rdf:datatype="&xsd;double">30.0</wgs84_pos:lat>
         <wgs84_pos:long rdf:datatype="&xsd;double">30.0</wgs84_pos:long>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -168,7 +170,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location31 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location31">
+    <rdf:Description rdf:about="&citypoker;Location31">
         <wgs84_pos:long rdf:datatype="&xsd;double">30.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">33.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -179,7 +181,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location32 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location32">
+    <rdf:Description rdf:about="&citypoker;Location32">
         <wgs84_pos:lat rdf:datatype="&xsd;double">27.0</wgs84_pos:lat>
         <wgs84_pos:long rdf:datatype="&xsd;double">30.0</wgs84_pos:long>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -190,7 +192,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location40 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location40">
+    <rdf:Description rdf:about="&citypoker;Location40">
         <wgs84_pos:long rdf:datatype="&xsd;double">40.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">40.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -200,7 +202,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location41 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location41">
+    <rdf:Description rdf:about="&citypoker;Location41">
         <wgs84_pos:long rdf:datatype="&xsd;double">40.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">43.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -211,7 +213,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location42 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location42">
+    <rdf:Description rdf:about="&citypoker;Location42">
         <wgs84_pos:lat rdf:datatype="&xsd;double">37.0</wgs84_pos:lat>
         <wgs84_pos:long rdf:datatype="&xsd;double">40.0</wgs84_pos:long>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -222,7 +224,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location50 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location50">
+    <rdf:Description rdf:about="&citypoker;Location50">
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
         <wgs84_pos:long rdf:datatype="&xsd;double">50.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">50.0</wgs84_pos:lat>
@@ -232,7 +234,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location51 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location51">
+    <rdf:Description rdf:about="&citypoker;Location51">
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
         <wgs84_pos:long rdf:datatype="&xsd;double">50.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">53.0</wgs84_pos:lat>
@@ -243,7 +245,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#Location52 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#Location52">
+    <rdf:Description rdf:about="&citypoker;Location52">
         <wgs84_pos:lat rdf:datatype="&xsd;double">47.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
         <wgs84_pos:long rdf:datatype="&xsd;double">50.0</wgs84_pos:long>
@@ -254,7 +256,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#StartLocation -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#StartLocation">
+    <rdf:Description rdf:about="&citypoker;StartLocation">
         <wgs84_pos:lat rdf:datatype="&xsd;double">1.0</wgs84_pos:lat>
         <wgs84_pos:long rdf:datatype="&xsd;double">1.0</wgs84_pos:long>
         <georss:radius rdf:datatype="&xsd;double">5.0</georss:radius>
@@ -264,7 +266,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#TimeOutCounter -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#TimeOutCounter">
+    <rdf:Description rdf:about="&citypoker;TimeOutCounter">
         <geogame:timeout rdf:datatype="&xsd;integer">240</geogame:timeout>
     </rdf:Description>
     
@@ -272,69 +274,69 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field1-initial-tokens -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field1-initial-tokens">
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-queen"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-king"/>
+    <rdf:Description rdf:about="&citypoker;field1-initial-tokens">
+        <geogame:has-token rdf:resource="&citypoker;CP-spare-queen"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-square-king"/>
     </rdf:Description>
     
 
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field2-initial-tokens -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field2-initial-tokens">
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-ten"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-jack"/>
+    <rdf:Description rdf:about="&citypoker;field2-initial-tokens">
+        <geogame:has-token rdf:resource="&citypoker;CP-cross-ten"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-heart-jack"/>
     </rdf:Description>
     
 
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field3-initial-tokens -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field3-initial-tokens">
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-queen"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-king"/>
+    <rdf:Description rdf:about="&citypoker;field3-initial-tokens">
+        <geogame:has-token rdf:resource="&citypoker;CP-spare-queen"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-square-king"/>
     </rdf:Description>
     
 
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field4-initial-tokens -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field4-initial-tokens">
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-ace"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-jack"/>
+    <rdf:Description rdf:about="&citypoker;field4-initial-tokens">
+        <geogame:has-token rdf:resource="&citypoker;CP-heart-ace"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-square-jack"/>
     </rdf:Description>
     
 
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#field5-initial-tokens -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#field5-initial-tokens">
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-ace"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-ten"/>
+    <rdf:Description rdf:about="&citypoker;field5-initial-tokens">
+        <geogame:has-token rdf:resource="&citypoker;CP-cross-ace"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-heart-ten"/>
     </rdf:Description>
     
 
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#player1-initial-tokens -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#player1-initial-tokens">
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-king"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-queen"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-jack"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-ace"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-square-ten"/>
+    <rdf:Description rdf:about="&citypoker;player1-initial-tokens">
+        <geogame:has-token rdf:resource="&citypoker;CP-cross-king"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-cross-queen"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-spare-jack"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-square-ace"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-square-ten"/>
     </rdf:Description>
     
 
 
     <!-- http://clemensklug.de/uni/ba/geogame/citypoker#player2-initial-tokens -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/citypoker#player2-initial-tokens">
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-cross-jack"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-king"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-heart-queen"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-ace"/>
-        <geogame:has-token rdf:resource="http://clemensklug.de/uni/ba/geogame/citypoker#CP-spare-ten"/>
+    <rdf:Description rdf:about="&citypoker;player2-initial-tokens">
+        <geogame:has-token rdf:resource="&citypoker;CP-cross-jack"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-heart-king"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-heart-queen"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-spare-ace"/>
+        <geogame:has-token rdf:resource="&citypoker;CP-spare-ten"/>
     </rdf:Description>
 </rdf:RDF>
 

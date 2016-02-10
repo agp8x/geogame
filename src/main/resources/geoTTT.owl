@@ -9,6 +9,7 @@
     <!ENTITY rdfs "http://www.w3.org/2000/01/rdf-schema#" >
     <!ENTITY wgs84_pos "http://www.w3.org/2003/01/geo/wgs84_pos#" >
     <!ENTITY rdf "http://www.w3.org/1999/02/22-rdf-syntax-ns#" >
+    <!ENTITY geottt "http://clemensklug.de/uni/ba/geogame/geoTTT#" >
 ]>
 
 
@@ -17,6 +18,7 @@
      xmlns:geogame="http://clemensklug.de/uni/ba/geogame#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:geottt="http://clemensklug.de/uni/ba/geogame/geoTTT#"
      xmlns:georss="http://www.georss.org/georss/"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
@@ -40,7 +42,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action00 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action00">
+    <rdf:Description rdf:about="&geottt;Action00">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
     </rdf:Description>
     
@@ -48,7 +50,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action01 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action01">
+    <rdf:Description rdf:about="&geottt;Action01">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
     </rdf:Description>
     
@@ -56,7 +58,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action02 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action02">
+    <rdf:Description rdf:about="&geottt;Action02">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
     </rdf:Description>
     
@@ -64,7 +66,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action10 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action10">
+    <rdf:Description rdf:about="&geottt;Action10">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
     </rdf:Description>
     
@@ -72,7 +74,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action11 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action11">
+    <rdf:Description rdf:about="&geottt;Action11">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
     </rdf:Description>
     
@@ -80,7 +82,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action12 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action12">
+    <rdf:Description rdf:about="&geottt;Action12">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
     </rdf:Description>
     
@@ -88,7 +90,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action20 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action20">
+    <rdf:Description rdf:about="&geottt;Action20">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
     </rdf:Description>
     
@@ -96,7 +98,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action21 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action21">
+    <rdf:Description rdf:about="&geottt;Action21">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
     </rdf:Description>
     
@@ -104,7 +106,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Action22 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action22">
+    <rdf:Description rdf:about="&geottt;Action22">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
     </rdf:Description>
     
@@ -112,7 +114,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#InitialTokenDisperse -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#InitialTokenDisperse">
+    <rdf:Description rdf:about="&geottt;InitialTokenDisperse">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
     </rdf:Description>
     
@@ -120,7 +122,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Location00 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Location00">
+    <rdf:Description rdf:about="&geottt;Location00">
         <wgs84_pos:long rdf:datatype="&xsd;double">10.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">10.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">4.0</georss:radius>
@@ -130,7 +132,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Location01 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Location01">
+    <rdf:Description rdf:about="&geottt;Location01">
         <wgs84_pos:lat rdf:datatype="&xsd;double">10.0</wgs84_pos:lat>
         <wgs84_pos:long rdf:datatype="&xsd;double">20.0</wgs84_pos:long>
         <georss:radius rdf:datatype="&xsd;double">4.0</georss:radius>
@@ -140,7 +142,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Location02 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Location02">
+    <rdf:Description rdf:about="&geottt;Location02">
         <wgs84_pos:lat rdf:datatype="&xsd;double">10.0</wgs84_pos:lat>
         <wgs84_pos:long rdf:datatype="&xsd;double">30.0</wgs84_pos:long>
         <georss:radius rdf:datatype="&xsd;double">4.0</georss:radius>
@@ -150,7 +152,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Location10 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Location10">
+    <rdf:Description rdf:about="&geottt;Location10">
         <wgs84_pos:long rdf:datatype="&xsd;double">10.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">20.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">4.0</georss:radius>
@@ -160,7 +162,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Location11 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Location11">
+    <rdf:Description rdf:about="&geottt;Location11">
         <wgs84_pos:long rdf:datatype="&xsd;double">20.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">20.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">4.0</georss:radius>
@@ -170,7 +172,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Location12 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Location12">
+    <rdf:Description rdf:about="&geottt;Location12">
         <wgs84_pos:lat rdf:datatype="&xsd;double">20.0</wgs84_pos:lat>
         <wgs84_pos:long rdf:datatype="&xsd;double">30.0</wgs84_pos:long>
         <georss:radius rdf:datatype="&xsd;double">4.0</georss:radius>
@@ -180,7 +182,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Location20 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Location20">
+    <rdf:Description rdf:about="&geottt;Location20">
         <wgs84_pos:long rdf:datatype="&xsd;double">10.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">30.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">4.0</georss:radius>
@@ -190,7 +192,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Location21 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Location21">
+    <rdf:Description rdf:about="&geottt;Location21">
         <wgs84_pos:long rdf:datatype="&xsd;double">20.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">30.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">4.0</georss:radius>
@@ -200,7 +202,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#Location22 -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Location22">
+    <rdf:Description rdf:about="&geottt;Location22">
         <wgs84_pos:long rdf:datatype="&xsd;double">30.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">30.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">4.0</georss:radius>
@@ -210,7 +212,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#StartLocation -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#StartLocation">
+    <rdf:Description rdf:about="&geottt;StartLocation">
         <wgs84_pos:long rdf:datatype="&xsd;double">-10.0</wgs84_pos:long>
         <wgs84_pos:lat rdf:datatype="&xsd;double">-10.0</wgs84_pos:lat>
         <georss:radius rdf:datatype="&xsd;double">1.0</georss:radius>
@@ -220,7 +222,7 @@
 
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#TimeOutCounter -->
 
-    <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#TimeOutCounter">
+    <rdf:Description rdf:about="&geottt;TimeOutCounter">
         <geogame:timeout rdf:datatype="&xsd;integer">240</geogame:timeout>
     </rdf:Description>
 </rdf:RDF>
