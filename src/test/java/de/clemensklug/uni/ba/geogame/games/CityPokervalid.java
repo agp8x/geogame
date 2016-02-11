@@ -18,7 +18,7 @@ public class CityPokervalid {
 
     @Test
     public void testCityPokerDefInvalid() throws Exception {
-        Validator.validate(GAME_DEF, 8);
+        Validator.validate(GAME_DEF, 13);
     }
 
     @Test

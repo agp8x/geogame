@@ -187,6 +187,13 @@
         <rdfs:subClassOf rdf:resource="&geogame;TokenAction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;at"/>
+                <owl:onClass rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;tokenhandler-is"/>
                 <owl:onClass rdf:resource="&citypoker;CPtokenDisperser"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -197,13 +204,6 @@
                 <owl:onProperty rdf:resource="&geogame;question"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;at"/>
-                <owl:onClass rdf:resource="http://www.w3.org/2003/01/geo/wgs84_pos#Point"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">3</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>

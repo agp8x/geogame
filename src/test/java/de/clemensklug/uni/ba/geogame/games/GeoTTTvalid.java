@@ -41,7 +41,7 @@ public class GeoTTTvalid {
     @Test
     public void testGeoTTTdefPartiallyInvalid() throws Exception {
         //the definition on itself is a valid ontology, but misses some properties to get a fully valid geogame
-        Validator.validate("geoTTTdef.owl", 5);
+        Validator.validate("geoTTTdef.owl", 8);
     }
 
 }

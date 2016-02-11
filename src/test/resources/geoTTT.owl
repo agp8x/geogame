@@ -42,6 +42,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action00">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -50,6 +51,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action01">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -58,6 +60,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action02">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -66,6 +69,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action10">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -74,6 +78,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action11">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -82,6 +87,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action12">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -90,6 +96,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action20">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -98,6 +105,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action21">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -106,6 +114,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#Action22">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -114,6 +123,7 @@
 
     <rdf:Description rdf:about="http://clemensklug.de/uni/ba/geogame/geoTTT#InitialTokenDisperse">
         <geogame:synctime rdf:datatype="&xsd;integer">-1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 

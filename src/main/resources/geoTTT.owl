@@ -44,6 +44,7 @@
 
     <rdf:Description rdf:about="&geottt;Action00">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -52,6 +53,7 @@
 
     <rdf:Description rdf:about="&geottt;Action01">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -60,6 +62,7 @@
 
     <rdf:Description rdf:about="&geottt;Action02">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -68,6 +71,7 @@
 
     <rdf:Description rdf:about="&geottt;Action10">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -76,6 +80,7 @@
 
     <rdf:Description rdf:about="&geottt;Action11">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -84,6 +89,7 @@
 
     <rdf:Description rdf:about="&geottt;Action12">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -92,6 +98,7 @@
 
     <rdf:Description rdf:about="&geottt;Action20">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -100,6 +107,7 @@
 
     <rdf:Description rdf:about="&geottt;Action21">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 
@@ -108,6 +116,7 @@
 
     <rdf:Description rdf:about="&geottt;Action22">
         <geogame:synctime rdf:datatype="&xsd;integer">1</geogame:synctime>
+        <geogame:question rdf:datatype="&xsd;string">foo</geogame:question>
     </rdf:Description>
     
 

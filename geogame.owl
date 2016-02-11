@@ -85,7 +85,6 @@
 
     <owl:ObjectProperty rdf:about="&geogame;dispersed-tokens">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
-        <rdf:type rdf:resource="&owl;FunctionalProperty"/>
         <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
         <rdfs:domain rdf:resource="&geogame;TokenDisperser"/>
         <rdfs:range rdf:resource="&geogame;TokenSet"/>
@@ -383,6 +382,12 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;at"/>
+                <owl:someValuesFrom rdf:resource="&geo;Point"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;question"/>
                 <owl:allValuesFrom rdf:resource="&xsd;string"/>
             </owl:Restriction>
@@ -392,12 +397,6 @@
                 <owl:onProperty rdf:resource="&geogame;enabled"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;boolean"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;at"/>
-                <owl:someValuesFrom rdf:resource="&geo;Point"/>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -473,6 +472,33 @@
         <rdfs:subClassOf rdf:resource="&geogame;GeoGameObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_condition_start"/>
+                <owl:onClass rdf:resource="&geogame;StartCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_condition_draw"/>
+                <owl:onClass rdf:resource="&geogame;DrawCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;game_condition_win"/>
+                <owl:onClass rdf:resource="&geogame;WinCondition"/>
+                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="&geogame;tokenConditionMaxIntermediateDistance"/>
+                <owl:allValuesFrom rdf:resource="&xsd;integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;boundingBox"/>
                 <owl:allValuesFrom rdf:resource="&geo;Point"/>
             </owl:Restriction>
@@ -486,28 +512,8 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;boundingBoxSizeY"/>
-                <owl:allValuesFrom rdf:resource="&xsd;integer"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;game_condition_win"/>
-                <owl:onClass rdf:resource="&geogame;WinCondition"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;game_action"/>
                 <owl:someValuesFrom rdf:resource="&geogame;Action"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;game_condition_draw"/>
-                <owl:onClass rdf:resource="&geogame;DrawCondition"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -518,14 +524,7 @@
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;game_condition_start"/>
-                <owl:onClass rdf:resource="&geogame;StartCondition"/>
-                <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="&geogame;tokenConditionMaxIntermediateDistance"/>
+                <owl:onProperty rdf:resource="&geogame;boundingBoxSizeY"/>
                 <owl:allValuesFrom rdf:resource="&xsd;integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -673,7 +672,8 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;dispersed-tokens"/>
-                <owl:someValuesFrom rdf:resource="&geogame;TokenSet"/>
+                <owl:onClass rdf:resource="&geogame;TokenSet"/>
+                <owl:minQualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:minQualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
     </owl:Class>
@@ -722,14 +722,14 @@
         <rdfs:subClassOf rdf:resource="http://www.opengis.net/ont/geosparql#SpatialObject"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geo;long"/>
+                <owl:onProperty rdf:resource="&geo;lat"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;double"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="&geo;lat"/>
+                <owl:onProperty rdf:resource="&geo;long"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
                 <owl:onDataRange rdf:resource="&xsd;double"/>
             </owl:Restriction>
