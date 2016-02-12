@@ -5,6 +5,7 @@
 package de.clemensklug.uni.ba.geogame.parser.validation;
 
 import com.hp.hpl.jena.query.QuerySolution;
+import de.clemensklug.uni.ba.geogame.model.GeogameConfig;
 import de.clemensklug.uni.ba.geogame.model.conditions.Condition;
 import de.clemensklug.uni.ba.geogame.model.conditions.LogicCondition;
 import de.clemensklug.uni.ba.geogame.model.conditions.TokenCondition;
@@ -259,5 +260,20 @@ public class SpatialValidator {
                     ", distances=" + _distances +
                     '}';
         }
+    }
+
+    public boolean validateBoundingBox(GeogameConfig config) {
+        if (config.getBounding().size() < 2) {
+            log.info("less than 2 points in bounding box, passing...");
+            return true;
+        }
+        log.info("only the first two points in bounding box list will be evaluated!");
+        int maxX = config.getBbX();
+        int maxY = config.getBbY();
+        Point a = config.getBounding().get(0);
+        Point b = config.getBounding().get(1);
+        int x = (int) Math.abs(a.getLatitude() - b.getLatitude());
+        int y = (int) Math.abs(a.getLongitude() - b.getLongitude());
+        return x <= maxX && y <= maxY;
     }
 }

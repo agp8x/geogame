@@ -8,6 +8,7 @@ import de.clemensklug.uni.ba.geogame.model.actions.Action;
 import de.clemensklug.uni.ba.geogame.model.conditions.LogicCondition;
 import de.clemensklug.uni.ba.geogame.model.spatial.Point;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -26,6 +27,9 @@ public class GeogameConfig implements GeogameObject {
     private List<Action> _actions;
     private List<Player> _players;
     private TriggeringMode _triggeringMode = TriggeringMode.WITHIN;
+    private List<Point> _bounding = Collections.emptyList();
+    private int _bbX;
+    private int _bbY;
 
     @Override
     public String getName() {
@@ -104,5 +108,29 @@ public class GeogameConfig implements GeogameObject {
 
     public void setTriggeringMode(TriggeringMode triggeringMode) {
         _triggeringMode = triggeringMode;
+    }
+
+    public int getBbX() {
+        return _bbX;
+    }
+
+    public void setBbX(int bbX) {
+        _bbX = bbX;
+    }
+
+    public int getBbY() {
+        return _bbY;
+    }
+
+    public void setBbY(int bbY) {
+        _bbY = bbY;
+    }
+
+    public List<Point> getBounding() {
+        return _bounding;
+    }
+
+    public void setBounding(List<Point> bounding) {
+        _bounding = bounding;
     }
 }

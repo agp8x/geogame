@@ -71,6 +71,9 @@ public class OWLParser implements ConfigParser {
     private OntProperty _gameCondWinProperty;
     private OntProperty _triggeringProperty;
     private OntProperty _tokencountProperty;
+    private OntProperty _boundingBoxProperty;
+    private OntProperty _bbXProperty;
+    private OntProperty _bbYProperty;
 
     public OWLParser(String filename) {
         _instanceMap = new HashMap<>();
@@ -121,6 +124,9 @@ public class OWLParser implements ConfigParser {
         _gameCondWinProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_CONDITION_WIN);
         _triggeringProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_TRIGGERING);
         _tokencountProperty = _ontModel.getOntProperty(Namespace.PROP_TOKENCOUNT);
+        _boundingBoxProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_BOUNDING_BOX);
+        _bbXProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_BOUNDING_BOX_X);
+        _bbYProperty = _ontModel.getOntProperty(Namespace.PROP_GAME_BOUNDING_BOX_Y);
     }
 
     public <T extends GeogameObject> List<T> getInstances(String ontClass) {
@@ -201,6 +207,15 @@ public class OWLParser implements ConfigParser {
         g.setDrawCondition((LogicCondition) filteredInstances(individual, _gameCondDrawProperty, Namespace.DRAW_CONDITION).get(0));
         g.setStartCondition((LogicCondition) filteredInstances(individual, _gameCondStartProperty, Namespace.START_CONDITION).get(0));
         g.setWinCondition((LogicCondition) filteredInstances(individual, _gameCondWinProperty, Namespace.WIN_CONDITION).get(0));
+        if (individual.hasProperty(_boundingBoxProperty)) {
+            g.setBounding(filteredInstances(individual, _boundingBoxProperty, Namespace.POINT));
+            if (individual.hasProperty(_bbXProperty)) {
+                g.setBbX(individual.getPropertyValue(_bbXProperty).asLiteral().getInt());
+            }
+            if (individual.hasProperty(_bbYProperty)) {
+                g.setBbY(individual.getPropertyValue(_bbYProperty).asLiteral().getInt());
+            }
+        }
         if (individual.hasProperty(_triggeringProperty)) {
             g.setTriggeringMode(TriggeringMode.valueOf(individual.getProperty(_triggeringProperty).getString()));
         }
@@ -258,8 +273,8 @@ public class OWLParser implements ConfigParser {
                 tokens = Collections.emptyList();
             }
             handler.setTokens(tokens);
-            if (individual.hasProperty(_tokencountProperty)){
-                individual.getProperty(_tokencountProperty).getInt();
+            if (individual.hasProperty(_tokencountProperty)) {
+                handler.setCount(individual.getProperty(_tokencountProperty).getInt());
             }
             log.trace("tokens: " + tokens + "; actually used tokens: " + tokens);
         }
