@@ -134,7 +134,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;tokenhandler-is"/>
-                <owl:onClass rdf:resource="&geogame;TokenDisperser"/>
+                <owl:onClass rdf:resource="&geogame;TokenDispenser"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -378,7 +378,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/geoTTT#InitialTokens -->
 
     <owl:NamedIndividual rdf:about="&geottt;InitialTokens">
-        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <rdf:type rdf:resource="&geogame;TokenDispenser"/>
         <geogame:dispersed-tokens rdf:resource="&geottt;TokensO"/>
         <geogame:dispersed-tokens rdf:resource="&geottt;TokensX"/>
     </owl:NamedIndividual>

@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
  * @author clemens
  */
 public class TokenDisperserTest {
-    private final static String _path = "src/test/resources/TokenDisperser/tokendisperser-";
+    private final static String _path = "src/test/resources/TokenDispenser/tokendisperser-";
 
     @Test
     public void testLoad2Token() throws Exception {
@@ -111,14 +111,14 @@ public class TokenDisperserTest {
 
     @Test
     public void testLoadGeoTTTToken() throws Exception {
-        OWLParser op = new OWLParser("src/test/resources/TokenDisperser/geoTTT_disperser.owl");
+        OWLParser op = new OWLParser("src/test/resources/TokenDispenser/geoTTT_disperser.owl");
         List<Action> disps = op.getInstances(ACTION);
         assertEquals(1, disps.size());
         Action a = disps.get(0);
         List<Point> triggers = new LinkedList<>();
         triggers.add(new Point(0, 0));
         a.setTriggers(triggers);
-        TokenDisperser d = (TokenDisperser) ((TokenAction) a).getHandler();
+        TokenDispenser d = (TokenDispenser) ((TokenAction) a).getHandler();
         assertFalse(d.getTokenRepository().isEmpty());
         assertEquals(2, d.getTokenRepository().size());
         Player p = new Player("foo");
@@ -131,7 +131,7 @@ public class TokenDisperserTest {
 
     @Test
     public void testAddTokens() throws Exception {
-        TokenDisperser disp = new TokenDisperser();
+        TokenDispenser disp = new TokenDispenser();
         List<TokenSet> tokens = new LinkedList<>();
         for (int i = 0; i < 5; i++) {
             TokenSet t = Mockito.mock(TokenSet.class);
@@ -147,7 +147,7 @@ public class TokenDisperserTest {
 
     @Test
     public void testAddRealTokens() throws Exception {
-        TokenDisperser disp = new TokenDisperser();
+        TokenDispenser disp = new TokenDispenser();
         List<TokenSet> tokens = new LinkedList<>();
         for (int i = 0; i < 5; i++) {
             TokenSet t = new TokenSet();

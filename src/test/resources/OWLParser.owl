@@ -201,7 +201,7 @@
     <!-- #TokenDis0 -->
 
     <owl:NamedIndividual rdf:about="#TokenDis0">
-        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <rdf:type rdf:resource="&geogame;TokenDispenser"/>
         <dispersed-tokens rdf:resource="#Token0"/>
     </owl:NamedIndividual>
     

@@ -86,7 +86,7 @@
     <owl:ObjectProperty rdf:about="&geogame;dispersed-tokens">
         <rdf:type rdf:resource="&owl;AsymmetricProperty"/>
         <rdf:type rdf:resource="&owl;IrreflexiveProperty"/>
-        <rdfs:domain rdf:resource="&geogame;TokenDisperser"/>
+        <rdfs:domain rdf:resource="&geogame;TokenDispenser"/>
         <rdfs:range rdf:resource="&geogame;TokenSet"/>
     </owl:ObjectProperty>
     
@@ -343,7 +343,7 @@
 
     <owl:DatatypeProperty rdf:about="&geogame;tokencount">
         <rdf:type rdf:resource="&owl;FunctionalProperty"/>
-        <rdfs:domain rdf:resource="&geogame;TokenDisperser"/>
+        <rdfs:domain rdf:resource="&geogame;TokenDispenser"/>
         <rdfs:range rdf:resource="&xsd;nonNegativeInteger"/>
     </owl:DatatypeProperty>
     
@@ -665,9 +665,9 @@
     
 
 
-    <!-- http://clemensklug.de/uni/ba/geogame#TokenDisperser -->
+    <!-- http://clemensklug.de/uni/ba/geogame#TokenDispenser -->
 
-    <owl:Class rdf:about="&geogame;TokenDisperser">
+    <owl:Class rdf:about="&geogame;TokenDispenser">
         <rdfs:subClassOf rdf:resource="&geogame;TokenHandler"/>
         <rdfs:subClassOf>
             <owl:Restriction>

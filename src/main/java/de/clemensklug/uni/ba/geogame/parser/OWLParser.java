@@ -24,7 +24,7 @@ import de.clemensklug.uni.ba.geogame.model.conditions.*;
 import de.clemensklug.uni.ba.geogame.model.spatial.Point;
 import de.clemensklug.uni.ba.geogame.model.token.Token;
 import de.clemensklug.uni.ba.geogame.model.token.TokenSet;
-import de.clemensklug.uni.ba.geogame.model.token.handler.TokenDisperser;
+import de.clemensklug.uni.ba.geogame.model.token.handler.TokenDispenser;
 import de.clemensklug.uni.ba.geogame.model.token.handler.TokenHandler;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -264,8 +264,8 @@ public class OWLParser implements ConfigParser {
 
     private <T extends GeogameObject> T buildTokenHandler(Individual individual) {
         TokenHandler tokenHandler = newInstance(individual);
-        if (tokenHandler instanceof TokenDisperser) {
-            TokenDisperser handler = (TokenDisperser) tokenHandler;
+        if (tokenHandler instanceof TokenDispenser) {
+            TokenDispenser handler = (TokenDispenser) tokenHandler;
             List<Token> tokens;
             if (individual.hasProperty(_dispersedTokenProperty)) {
                 tokens = filteredInstances(individual, _dispersedTokenProperty, Namespace.TOKENSET);

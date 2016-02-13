@@ -6,7 +6,7 @@ package de.clemensklug.uni.ba.geogame.model.actions;
 
 import de.clemensklug.uni.ba.geogame.model.Player;
 import de.clemensklug.uni.ba.geogame.model.token.TokenSet;
-import de.clemensklug.uni.ba.geogame.model.token.handler.TokenDisperser;
+import de.clemensklug.uni.ba.geogame.model.token.handler.TokenDispenser;
 import de.clemensklug.uni.ba.geogame.model.token.handler.TokenHandler;
 import org.junit.Before;
 import org.junit.Test;
@@ -25,7 +25,7 @@ public class TokenActionPickupTest {
     @Before
     public void setUp() throws Exception {
         _action = new TokenAction();
-        _handler = mock(TokenDisperser.class);
+        _handler = mock(TokenDispenser.class);
         _action.setHandler(_handler);
         _player = mock(Player.class);
         _mockedCollection = mock(TokenSet.class);

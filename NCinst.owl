@@ -474,7 +474,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialDPA -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialDPA">
-        <rdf:type rdf:resource="&neocart;NCInitialDisperserAction"/>
+        <rdf:type rdf:resource="&neocart;NCInitialDispenserAction"/>
         <geogame:synctime rdf:datatype="&xsd;integer">0</geogame:synctime>
         <geogame:enabled rdf:datatype="&xsd;boolean">true</geogame:enabled>
         <geogame:tokenhandler-is rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialTokenDisp"/>
@@ -486,7 +486,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialTokenDisp -->
 
     <owl:NamedIndividual rdf:about="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#ncInitialTokenDisp">
-        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <rdf:type rdf:resource="&geogame;TokenDispenser"/>
         <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#player1-ITS"/>
         <geogame:dispersed-tokens rdf:resource="http://clemensklug.de/uni/ba/geogame/neocartographer/NCSampleInstance#player2-ITS"/>
     </owl:NamedIndividual>

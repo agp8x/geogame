@@ -7,7 +7,7 @@ package de.clemensklug.uni.ba.geogame.model.actions;
 import de.clemensklug.uni.ba.geogame.model.Player;
 import de.clemensklug.uni.ba.geogame.model.spatial.Point;
 import de.clemensklug.uni.ba.geogame.model.token.TokenSet;
-import de.clemensklug.uni.ba.geogame.model.token.handler.TokenDisperser;
+import de.clemensklug.uni.ba.geogame.model.token.handler.TokenDispenser;
 import de.clemensklug.uni.ba.geogame.model.token.handler.TokenHandler;
 
 /**
@@ -24,7 +24,7 @@ public class TokenAction extends Action {
         }
         log.trace("CHECK CHALLENGE");
         if (checkChallenges(p)) {
-            if (_handler instanceof TokenDisperser) {
+            if (_handler instanceof TokenDispenser) {
                 final TokenSet pickup = _handler.pickup(p);
                 p.addAllToInventory(pickup.getTokens());
                 log.info("picked up token for player " + p + "; tokens: '" + pickup + "' @" + this.getName() + ", active:" + _handler.isActive());

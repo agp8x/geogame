@@ -21,7 +21,7 @@ import de.clemensklug.uni.ba.geogame.model.token.Token;
 import de.clemensklug.uni.ba.geogame.model.token.TokenSet;
 import de.clemensklug.uni.ba.geogame.model.token.handler.TokenCapture;
 import de.clemensklug.uni.ba.geogame.model.token.handler.TokenCounter;
-import de.clemensklug.uni.ba.geogame.model.token.handler.TokenDisperser;
+import de.clemensklug.uni.ba.geogame.model.token.handler.TokenDispenser;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -39,7 +39,7 @@ class Mapping {
         _classMap.put(Namespace.ENABLE_ACTION, EnableOtherActionAction.class);
         _classMap.put(Namespace.TOKEN_CAPTURE, TokenCapture.class);
         _classMap.put(Namespace.TOKEN_COUNTER, TokenCounter.class);
-        _classMap.put(Namespace.TOKEN_DISPERSER, TokenDisperser.class);
+        _classMap.put(Namespace.TOKEN_DISPENSER, TokenDispenser.class);
         _classMap.put(Namespace.TOKEN_ACTION, TokenAction.class);
         _classMap.put(Namespace.SYNCTIME, SyncTimeChallenge.class);
         _classMap.put(Namespace.COMPOUND, QuestionChallenge.class);

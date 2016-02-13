@@ -15,7 +15,6 @@ public class Namespace {
     public final static String GEORSS_NAMESPACE = "http://www.georss.org/georss/";
     //Elements
     public static final String GEOGAME_ELEMENT = GEOGAME_NAMESPACE + "Geogame";
-    public static final String GEOTTT_ELEMENT = GEOGAME_NAMESPACE + "GeoTTT";
     public final static String POINT = GEO_NAMESPACE + "Point";
     //Actions
     public final static String ACTION = GEOGAME_NAMESPACE + "Action";
@@ -25,7 +24,7 @@ public class Namespace {
     //TokenHandler
     public final static String TOKEN_HANLDER = GEOGAME_NAMESPACE + "TokenHandler";
     public final static String TOKEN_CAPTURE = GEOGAME_NAMESPACE + "TokenCapture";
-    public final static String TOKEN_DISPERSER = GEOGAME_NAMESPACE + "TokenDisperser";
+    public final static String TOKEN_DISPENSER = GEOGAME_NAMESPACE + "TokenDispenser";
     public final static String TOKEN_COUNTER = GEOGAME_NAMESPACE + "TokenCount";
     //Challenge
     public final static String SYNCTIME = GEOGAME_NAMESPACE + "SyncTimeChallenge";

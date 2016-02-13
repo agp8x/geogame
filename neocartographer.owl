@@ -53,14 +53,14 @@
     
 
 
-    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCInitialDisperserAction -->
+    <!-- http://clemensklug.de/uni/ba/geogame/neocartographer#NCInitialDispenserAction -->
 
-    <owl:Class rdf:about="&neocart;NCInitialDisperserAction">
+    <owl:Class rdf:about="&neocart;NCInitialDispenserAction">
         <rdfs:subClassOf rdf:resource="&geogame;TokenAction"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;tokenhandler-is"/>
-                <owl:onClass rdf:resource="&geogame;TokenDisperser"/>
+                <owl:onClass rdf:resource="&geogame;TokenDispenser"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>
@@ -82,7 +82,7 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="&geogame;satisfied-action"/>
-                <owl:onClass rdf:resource="&neocart;NCInitialDisperserAction"/>
+                <owl:onClass rdf:resource="&neocart;NCInitialDispenserAction"/>
                 <owl:qualifiedCardinality rdf:datatype="&xsd;nonNegativeInteger">1</owl:qualifiedCardinality>
             </owl:Restriction>
         </rdfs:subClassOf>

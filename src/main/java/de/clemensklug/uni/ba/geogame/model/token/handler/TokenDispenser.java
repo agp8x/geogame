@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * @author clemens
  */
-public class TokenDisperser extends BaseHandler implements TokenHandler {
+public class TokenDispenser extends BaseHandler implements TokenHandler {
     private List<Token> _tokens = new ArrayList<>();//TODO: concurrency
     private DisperseMode _mode = DisperseMode.SINGLE;
     private int _count = -1;
@@ -29,7 +29,7 @@ public class TokenDisperser extends BaseHandler implements TokenHandler {
      */
     @Override
     public boolean drop(Player player) {
-        log.debug("dropping token on TokenDisperser (" + player + ")");
+        log.debug("dropping token on TokenDispenser (" + player + ")");
         Token param = new TokenSet();
         switch (_mode) {
             case SINGLE:
@@ -50,7 +50,7 @@ public class TokenDisperser extends BaseHandler implements TokenHandler {
     }
 
     /**
-     * as a TokenDisperser does not keep track of who dropped tokens, there is no useful return value except an empty map
+     * as a TokenDispenser does not keep track of who dropped tokens, there is no useful return value except an empty map
      *
      * @return empty map
      */
@@ -98,7 +98,7 @@ public class TokenDisperser extends BaseHandler implements TokenHandler {
 
     @Override
     public String toString() {
-        return "TokenDisperser{" +
+        return "TokenDispenser{" +
                 "_tokens=" + _tokens +
                 '}';
     }

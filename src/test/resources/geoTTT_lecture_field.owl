@@ -602,7 +602,7 @@
     <!-- http://clemensklug.de/uni/ba/geogame/main/geottt#StartTokens -->
 
     <owl:NamedIndividual rdf:about="&geogame2;main/geottt#StartTokens">
-        <rdf:type rdf:resource="&geogame;TokenDisperser"/>
+        <rdf:type rdf:resource="&geogame;TokenDispenser"/>
         <dispersed-tokens rdf:resource="&geogame2;main/geottt/o"/>
         <dispersed-tokens rdf:resource="&geogame2;main/geottt/x"/>
     </owl:NamedIndividual>
