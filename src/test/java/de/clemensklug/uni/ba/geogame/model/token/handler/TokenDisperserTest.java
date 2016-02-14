@@ -24,7 +24,7 @@ import static org.mockito.Mockito.when;
  * @author clemens
  */
 public class TokenDisperserTest {
-    private final static String _path = "src/test/resources/TokenDispenser/tokendisperser-";
+    private final static String _path = "src/test/resources/TokenDispenser/tokendispenser-";
 
     @Test
     public void testLoad2Token() throws Exception {
@@ -111,7 +111,7 @@ public class TokenDisperserTest {
 
     @Test
     public void testLoadGeoTTTToken() throws Exception {
-        OWLParser op = new OWLParser("src/test/resources/TokenDispenser/geoTTT_disperser.owl");
+        OWLParser op = new OWLParser("src/test/resources/TokenDispenser/geoTTT_dispenser.owl");
         List<Action> disps = op.getInstances(ACTION);
         assertEquals(1, disps.size());
         Action a = disps.get(0);
